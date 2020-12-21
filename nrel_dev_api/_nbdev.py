@@ -2,7 +2,8 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"SolarResourceData": "00_solar.ipynb"}
+index = {"SolarResourceData": "00_solar.ipynb",
+         "BASE_URL": "00_solar.ipynb"}
 
 modules = ["solar.py"]
 

@@ -6,8 +6,8 @@ title: nrel-dev-api
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "Python API for NREL (National Renewable Energy Lab) developer API to access."
-description: "Python API for NREL (National Renewable Energy Lab) developer API to access."
+summary: "Python API for NREL (National Renewable Energy Lab) developer API."
+description: "Python API for NREL (National Renewable Energy Lab) developer API."
 nb_path: "index.ipynb"
 ---
 <!--
@@ -31,7 +31,7 @@ nb_path: "index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>{% include note.html content='In order to use the NREL developer API, you will need an API key from NREL. You can get one <a href="https://developer.nrel.gov/signup/">here</a>. The process is simple and only requires your name and email (where you will receive the API key). ' %}</p>
+<p><em>NOTE: In order to use the NREL developer API, you will need an API key from NREL. You can get one <a href="https://developer.nrel.gov/signup/">here</a>. The process is simple and only requires your name and email (where you will receive the API key).</em></p>
 
 </div>
 </div>
@@ -55,6 +55,12 @@ nb_path: "index.ipynb"
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="SolarResourceData">SolarResourceData<a class="anchor-link" href="#SolarResourceData"> </a></h2>
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -63,6 +69,8 @@ nb_path: "index.ipynb"
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;Get solar resource data for a specific location&quot;&quot;&quot;</span>
+
+<span class="n">NREL_API_KEY</span> <span class="o">=</span> <span class="s2">&quot;DEMO_KEY&quot;</span>
 
 <span class="c1"># create a class</span>
 <span class="n">solar_resource_data</span> <span class="o">=</span> <span class="n">SolarResourceData</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">NREL_API_KEY</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">lon</span><span class="o">=-</span><span class="mi">105</span><span class="p">)</span>

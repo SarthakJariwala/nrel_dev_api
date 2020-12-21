@@ -1,8 +1,8 @@
 # nrel-dev-api
-> Python API for NREL (National Renewable Energy Lab) developer API to access.
+> Python API for NREL (National Renewable Energy Lab) developer API.
 
 
-{% include note.html content='In order to use the NREL developer API, you will need an API key from NREL. You can get one [here](https://developer.nrel.gov/signup/). The process is simple and only requires your name and email (where you will receive the API key). ' %}
+*NOTE: In order to use the NREL developer API, you will need an API key from NREL. You can get one [here](https://developer.nrel.gov/signup/). The process is simple and only requires your name and email (where you will receive the API key).*
 
 ## Install
 
@@ -10,8 +10,12 @@
 
 ## How to use
 
+## SolarResourceData
+
 ```python
 """Get solar resource data for a specific location"""
+
+NREL_API_KEY = "DEMO_KEY"
 
 # create a class
 solar_resource_data = SolarResourceData(api_key=NREL_API_KEY, lat=40, lon=-105)
