@@ -44,7 +44,7 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><code>pip install nrel_dev_api</code></p>
+<p><code>pip install --upgrade nrel_dev_api</code></p>
 
 </div>
 </div>
@@ -57,7 +57,8 @@ nb_path: "index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="SolarResourceData">SolarResourceData<a class="anchor-link" href="#SolarResourceData"> </a></h2>
+<h3 id="PVWatts-V6">PVWatts V6<a class="anchor-link" href="#PVWatts-V6"> </a></h3><p>Estimate the energy production of grid-connected photovoltaic (PV) energy systems using NREL's PVWatts V6 API based on a few simple location and system inputs.</p>
+
 </div>
 </div>
 </div>
@@ -68,15 +69,18 @@ nb_path: "index.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;Get solar resource data for a specific location&quot;&quot;&quot;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pvwatts_v6</span> <span class="o">=</span> <span class="n">PVWattsV6</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">NREL_API_KEY</span><span class="p">,</span>
+                       <span class="n">system_capacity</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+                       <span class="n">address</span><span class="o">=</span><span class="s2">&quot;Seattle, WA&quot;</span><span class="p">,</span>
+                       <span class="n">azimuth</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
+                       <span class="n">tilt</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+                       <span class="n">array_type</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                       <span class="n">module_type</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                       <span class="n">losses</span><span class="o">=</span><span class="mi">10</span>
+                      <span class="p">)</span>
 
-<span class="n">NREL_API_KEY</span> <span class="o">=</span> <span class="s2">&quot;DEMO_KEY&quot;</span>
-
-<span class="c1"># create a class</span>
-<span class="n">solar_resource_data</span> <span class="o">=</span> <span class="n">SolarResourceData</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">NREL_API_KEY</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">lon</span><span class="o">=-</span><span class="mi">105</span><span class="p">)</span>
-
-<span class="c1"># perform the get request</span>
-<span class="n">solar_resource_data</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<span class="c1"># the output data is stored in the outputs attribute</span>
+<span class="n">pvwatts_v6</span><span class="o">.</span><span class="n">outputs</span>
 </pre></div>
 
     </div>
@@ -91,50 +95,57 @@ nb_path: "index.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;version&#39;: &#39;1.0.0&#39;,
- &#39;warnings&#39;: [],
- &#39;errors&#39;: [],
- &#39;metadata&#39;: {&#39;sources&#39;: [&#39;Perez-SUNY/NREL, 2012&#39;]},
- &#39;inputs&#39;: {&#39;lat&#39;: &#39;40&#39;, &#39;lon&#39;: &#39;-105&#39;},
- &#39;outputs&#39;: {&#39;avg_dni&#39;: {&#39;annual&#39;: 6.06,
-   &#39;monthly&#39;: {&#39;jan&#39;: 5.0,
-    &#39;feb&#39;: 5.34,
-    &#39;mar&#39;: 5.94,
-    &#39;apr&#39;: 6.11,
-    &#39;may&#39;: 6.36,
-    &#39;jun&#39;: 7.43,
-    &#39;jul&#39;: 7.48,
-    &#39;aug&#39;: 6.65,
-    &#39;sep&#39;: 6.81,
-    &#39;oct&#39;: 5.82,
-    &#39;nov&#39;: 5.11,
-    &#39;dec&#39;: 4.67}},
-  &#39;avg_ghi&#39;: {&#39;annual&#39;: 4.81,
-   &#39;monthly&#39;: {&#39;jan&#39;: 2.5,
-    &#39;feb&#39;: 3.43,
-    &#39;mar&#39;: 4.69,
-    &#39;apr&#39;: 5.69,
-    &#39;may&#39;: 6.6,
-    &#39;jun&#39;: 7.25,
-    &#39;jul&#39;: 7.14,
-    &#39;aug&#39;: 6.24,
-    &#39;sep&#39;: 5.35,
-    &#39;oct&#39;: 3.85,
-    &#39;nov&#39;: 2.75,
-    &#39;dec&#39;: 2.19}},
-  &#39;avg_lat_tilt&#39;: {&#39;annual&#39;: 5.82,
-   &#39;monthly&#39;: {&#39;jan&#39;: 4.79,
-    &#39;feb&#39;: 5.4,
-    &#39;mar&#39;: 6.07,
-    &#39;apr&#39;: 6.11,
-    &#39;may&#39;: 6.25,
-    &#39;jun&#39;: 6.47,
-    &#39;jul&#39;: 6.58,
-    &#39;aug&#39;: 6.44,
-    &#39;sep&#39;: 6.53,
-    &#39;oct&#39;: 5.71,
-    &#39;nov&#39;: 4.99,
-    &#39;dec&#39;: 4.47}}}}</pre>
+<pre>{&#39;ac_monthly&#39;: [197.7586059570312,
+  281.6268005371094,
+  370.9747619628906,
+  494.173583984375,
+  512.7410888671875,
+  540.3777465820312,
+  592.75146484375,
+  578.3128662109375,
+  484.0272521972656,
+  333.1608276367188,
+  233.0740203857422,
+  186.9368896484375],
+ &#39;poa_monthly&#39;: [58.9533576965332,
+  83.970703125,
+  113.2405624389648,
+  153.9364776611328,
+  160.2881927490234,
+  171.4797973632812,
+  192.8575592041016,
+  188.4494323730469,
+  154.3850555419922,
+  102.9901733398438,
+  69.81695556640625,
+  55.09452438354492],
+ &#39;solrad_monthly&#39;: [1.901721239089966,
+  2.998953580856323,
+  3.652921438217163,
+  5.131216049194336,
+  5.170587062835693,
+  5.715993404388428,
+  6.221211433410645,
+  6.079013824462891,
+  5.14616870880127,
+  3.322263717651367,
+  2.327231884002686,
+  1.77724277973175],
+ &#39;dc_monthly&#39;: [208.4532623291016,
+  295.5293273925781,
+  388.7458190917969,
+  516.7040405273438,
+  536.7205200195312,
+  565.5615234375,
+  619.6510620117188,
+  604.18212890625,
+  505.6007690429688,
+  349.08642578125,
+  244.8111724853516,
+  196.868896484375],
+ &#39;ac_annual&#39;: 4805.91552734375,
+ &#39;solrad_annual&#39;: 4.120377063751221,
+ &#39;capacity_factor&#39;: 13.7155122756958}</pre>
 </div>
 
 </div>
@@ -147,7 +158,8 @@ nb_path: "index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="PVWatts-V6">PVWatts V6<a class="anchor-link" href="#PVWatts-V6"> </a></h2>
+<p>You can also view the details about the station.</p>
+
 </div>
 </div>
 </div>
@@ -158,23 +170,7 @@ nb_path: "index.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;Estimate the energy production of grid-connected photovoltaic (PV) energy systems </span>
-<span class="sd">using NREL&#39;s PVWatts V6 API based on a few simple inputs.&quot;&quot;&quot;</span>
-
-<span class="c1"># create PVWattsV6 class</span>
-<span class="n">pvwatts_v6</span> <span class="o">=</span> <span class="n">PVWattsV6</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">NREL_API_KEY</span><span class="p">,</span>
-                       <span class="n">system_capacity</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
-                       <span class="n">lat</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
-                       <span class="n">lon</span><span class="o">=-</span><span class="mi">105</span><span class="p">,</span>
-                       <span class="n">azimuth</span><span class="o">=</span><span class="mi">180</span><span class="p">,</span>
-                       <span class="n">tilt</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
-                       <span class="n">array_type</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                       <span class="n">module_type</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
-                       <span class="n">losses</span><span class="o">=</span><span class="mi">10</span>
-                      <span class="p">)</span>
-
-<span class="c1"># request the estimate</span>
-<span class="n">pvwatts_v6</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pvwatts_v6</span><span class="o">.</span><span class="n">station_info</span>
 </pre></div>
 
     </div>
@@ -189,85 +185,165 @@ nb_path: "index.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;inputs&#39;: {&#39;system_capacity&#39;: &#39;4&#39;,
-  &#39;module_type&#39;: &#39;1&#39;,
-  &#39;losses&#39;: &#39;10&#39;,
-  &#39;array_type&#39;: &#39;1&#39;,
-  &#39;tilt&#39;: &#39;40&#39;,
-  &#39;azimuth&#39;: &#39;180&#39;,
-  &#39;lat&#39;: &#39;40&#39;,
-  &#39;lon&#39;: &#39;-105&#39;,
-  &#39;dataset&#39;: &#39;nsrdb&#39;,
-  &#39;radius&#39;: &#39;100&#39;,
-  &#39;timeframe&#39;: &#39;monthly&#39;,
-  &#39;dc_ac_ratio&#39;: &#39;1.2&#39;,
-  &#39;gcr&#39;: &#39;0.4&#39;,
-  &#39;inv_eff&#39;: &#39;96&#39;},
- &#39;errors&#39;: [],
- &#39;warnings&#39;: [],
- &#39;version&#39;: &#39;1.0.2&#39;,
- &#39;ssc_info&#39;: {&#39;version&#39;: 45,
-  &#39;build&#39;: &#39;Linux 64 bit GNU/C++ Jul  7 2015 14:24:09&#39;},
- &#39;station_info&#39;: {&#39;lat&#39;: 40.0099983215332,
-  &#39;lon&#39;: -105.0199966430664,
-  &#39;elev&#39;: 1581.839965820312,
-  &#39;tz&#39;: -7.0,
-  &#39;location&#39;: &#39;None&#39;,
+<pre>{&#39;lat&#39;: 47.61000061035156,
+ &#39;lon&#39;: -122.3399963378906,
+ &#39;elev&#39;: 48.70000076293945,
+ &#39;tz&#39;: -8.0,
+ &#39;location&#39;: &#39;None&#39;,
+ &#39;city&#39;: &#39;&#39;,
+ &#39;state&#39;: &#39;Washington&#39;,
+ &#39;solar_resource_file&#39;: &#39;W12234N4761.csv&#39;,
+ &#39;distance&#39;: 1048}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="SolarResourceData">SolarResourceData<a class="anchor-link" href="#SolarResourceData"> </a></h3><p>Get solar resource data for a specific location</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">solar_resource_data</span> <span class="o">=</span> <span class="n">SolarResourceData</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">NREL_API_KEY</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">lon</span><span class="o">=-</span><span class="mi">105</span><span class="p">)</span>
+
+<span class="c1"># the output data is stored in the outputs attribute</span>
+<span class="n">solar_resource_data</span><span class="o">.</span><span class="n">outputs</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;avg_dni&#39;: {&#39;annual&#39;: 6.06,
+  &#39;monthly&#39;: {&#39;jan&#39;: 5.0,
+   &#39;feb&#39;: 5.34,
+   &#39;mar&#39;: 5.94,
+   &#39;apr&#39;: 6.11,
+   &#39;may&#39;: 6.36,
+   &#39;jun&#39;: 7.43,
+   &#39;jul&#39;: 7.48,
+   &#39;aug&#39;: 6.65,
+   &#39;sep&#39;: 6.81,
+   &#39;oct&#39;: 5.82,
+   &#39;nov&#39;: 5.11,
+   &#39;dec&#39;: 4.67}},
+ &#39;avg_ghi&#39;: {&#39;annual&#39;: 4.81,
+  &#39;monthly&#39;: {&#39;jan&#39;: 2.5,
+   &#39;feb&#39;: 3.43,
+   &#39;mar&#39;: 4.69,
+   &#39;apr&#39;: 5.69,
+   &#39;may&#39;: 6.6,
+   &#39;jun&#39;: 7.25,
+   &#39;jul&#39;: 7.14,
+   &#39;aug&#39;: 6.24,
+   &#39;sep&#39;: 5.35,
+   &#39;oct&#39;: 3.85,
+   &#39;nov&#39;: 2.75,
+   &#39;dec&#39;: 2.19}},
+ &#39;avg_lat_tilt&#39;: {&#39;annual&#39;: 5.82,
+  &#39;monthly&#39;: {&#39;jan&#39;: 4.79,
+   &#39;feb&#39;: 5.4,
+   &#39;mar&#39;: 6.07,
+   &#39;apr&#39;: 6.11,
+   &#39;may&#39;: 6.25,
+   &#39;jun&#39;: 6.47,
+   &#39;jul&#39;: 6.58,
+   &#39;aug&#39;: 6.44,
+   &#39;sep&#39;: 6.53,
+   &#39;oct&#39;: 5.71,
+   &#39;nov&#39;: 4.99,
+   &#39;dec&#39;: 4.47}}}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="SolarDatasetQuery">SolarDatasetQuery<a class="anchor-link" href="#SolarDatasetQuery"> </a></h3><p>Get information on the closest climate data for a location.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">solar_dataset_query</span> <span class="o">=</span> <span class="n">SolarDatasetQuery</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">NREL_API_KEY</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="s2">&quot;San Francisco, CA&quot;</span><span class="p">)</span>
+
+<span class="c1"># get the output</span>
+<span class="n">solar_dataset_query</span><span class="o">.</span><span class="n">outputs</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;tmy2&#39;: {&#39;id&#39;: &#39;0-23234&#39;,
+  &#39;city&#39;: &#39;SAN FRANCISCO&#39;,
+  &#39;state&#39;: &#39;CALIFORNIA&#39;,
+  &#39;timezone&#39;: -8,
+  &#39;lat&#39;: 37.617,
+  &#39;lon&#39;: -122.4,
+  &#39;elevation&#39;: 2,
+  &#39;distance&#39;: 18362},
+ &#39;tmy3&#39;: {&#39;id&#39;: &#39;1-724940&#39;,
+  &#39;city&#39;: &#39;SAN FRANCISCO INTL AP&#39;,
+  &#39;state&#39;: &#39;CALIFORNIA&#39;,
+  &#39;timezone&#39;: -8,
+  &#39;lat&#39;: 37.617,
+  &#39;lon&#39;: -122.4,
+  &#39;elevation&#39;: 2,
+  &#39;distance&#39;: 18362},
+ &#39;intl&#39;: None,
+ &#39;nsrdb&#39;: {&#39;id&#39;: &#39;3-W122N037-W12242N3777&#39;,
   &#39;city&#39;: &#39;&#39;,
-  &#39;state&#39;: &#39;Colorado&#39;,
-  &#39;solar_resource_file&#39;: &#39;W10502N4001.csv&#39;,
-  &#39;distance&#39;: 2029},
- &#39;outputs&#39;: {&#39;ac_monthly&#39;: [474.4326171875,
-   484.3903503417969,
-   595.7704467773438,
-   592.0599365234375,
-   591.2662353515625,
-   589.3538208007812,
-   583.2352905273438,
-   586.4593505859375,
-   584.8131713867188,
-   561.72314453125,
-   486.1260375976562,
-   445.6881713867188],
-  &#39;poa_monthly&#39;: [141.4809417724609,
-   145.5711975097656,
-   184.7876434326172,
-   181.5513763427734,
-   186.4280853271484,
-   190.5132904052734,
-   188.7499694824219,
-   190.5398101806641,
-   188.2213134765625,
-   175.4444122314453,
-   146.3170471191406,
-   131.1568298339844],
-  &#39;solrad_monthly&#39;: [4.563901424407959,
-   5.198971271514893,
-   5.960891723632812,
-   6.051712512969971,
-   6.013809204101562,
-   6.350442886352539,
-   6.088708877563477,
-   6.146445274353027,
-   6.274043560028076,
-   5.659497261047363,
-   4.877234935760498,
-   4.230865478515625],
-  &#39;dc_monthly&#39;: [497.9421081542969,
-   511.1524963378906,
-   634.3223266601562,
-   623.7313842773438,
-   617.8812866210938,
-   615.4278564453125,
-   609.3965454101562,
-   612.7506713867188,
-   610.5584106445312,
-   588.6157836914062,
-   508.0747680664062,
-   465.4272155761719],
-  &#39;ac_annual&#39;: 6575.31884765625,
-  &#39;solrad_annual&#39;: 5.618043899536133,
-  &#39;capacity_factor&#39;: 18.76517868041992}}</pre>
+  &#39;state&#39;: &#39;California&#39;,
+  &#39;country&#39;: None,
+  &#39;lat&#39;: 37.77,
+  &#39;lon&#39;: -122.42,
+  &#39;distance&#39;: 1129,
+  &#39;timezone&#39;: -8,
+  &#39;elevation&#39;: 55,
+  &#39;resolution&#39;: 4}}</pre>
 </div>
 
 </div>

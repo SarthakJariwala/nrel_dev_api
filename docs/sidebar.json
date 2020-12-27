@@ -1,6 +1,7 @@
 {
   "nrel_dev_api": {
     "Overview": "/",
+    "Core": "core.html",
     "Solar": "solar.html"
   }
 }

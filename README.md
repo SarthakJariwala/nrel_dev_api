@@ -6,85 +6,19 @@
 
 ## Install
 
-`pip install nrel_dev_api`
+`pip install --upgrade nrel_dev_api`
 
 ## How to use
 
-## SolarResourceData
+### PVWatts V6
+
+Estimate the energy production of grid-connected photovoltaic (PV) energy systems using NREL's PVWatts V6 API based on a few simple location and system inputs.
 
 ```python
-"""Get solar resource data for a specific location"""
-
-NREL_API_KEY = "DEMO_KEY"
-
-# create a class
-solar_resource_data = SolarResourceData(api_key=NREL_API_KEY, lat=40, lon=-105)
-
-# perform the get request
-solar_resource_data.get()
-```
-
-
-
-
-    {'version': '1.0.0',
-     'warnings': [],
-     'errors': [],
-     'metadata': {'sources': ['Perez-SUNY/NREL, 2012']},
-     'inputs': {'lat': '40', 'lon': '-105'},
-     'outputs': {'avg_dni': {'annual': 6.06,
-       'monthly': {'jan': 5.0,
-        'feb': 5.34,
-        'mar': 5.94,
-        'apr': 6.11,
-        'may': 6.36,
-        'jun': 7.43,
-        'jul': 7.48,
-        'aug': 6.65,
-        'sep': 6.81,
-        'oct': 5.82,
-        'nov': 5.11,
-        'dec': 4.67}},
-      'avg_ghi': {'annual': 4.81,
-       'monthly': {'jan': 2.5,
-        'feb': 3.43,
-        'mar': 4.69,
-        'apr': 5.69,
-        'may': 6.6,
-        'jun': 7.25,
-        'jul': 7.14,
-        'aug': 6.24,
-        'sep': 5.35,
-        'oct': 3.85,
-        'nov': 2.75,
-        'dec': 2.19}},
-      'avg_lat_tilt': {'annual': 5.82,
-       'monthly': {'jan': 4.79,
-        'feb': 5.4,
-        'mar': 6.07,
-        'apr': 6.11,
-        'may': 6.25,
-        'jun': 6.47,
-        'jul': 6.58,
-        'aug': 6.44,
-        'sep': 6.53,
-        'oct': 5.71,
-        'nov': 4.99,
-        'dec': 4.47}}}}
-
-
-
-## PVWatts V6
-
-```python
-"""Estimate the energy production of grid-connected photovoltaic (PV) energy systems 
-using NREL's PVWatts V6 API based on a few simple inputs."""
-
-# create PVWattsV6 class
+# create PVWattsV6 class and pass the necessary location and system inputs
 pvwatts_v6 = PVWattsV6(api_key=NREL_API_KEY,
                        system_capacity=4,
-                       lat=40,
-                       lon=-105,
+                       address="Seattle, WA",
                        azimuth=180,
                        tilt=40,
                        array_type=1,
@@ -92,91 +26,186 @@ pvwatts_v6 = PVWattsV6(api_key=NREL_API_KEY,
                        losses=10
                       )
 
-# request the estimate
-pvwatts_v6.get()
+# the output data is stored in the outputs attribute
+pvwatts_v6.outputs
 ```
 
 
 
 
-    {'inputs': {'system_capacity': '4',
-      'module_type': '1',
-      'losses': '10',
-      'array_type': '1',
-      'tilt': '40',
-      'azimuth': '180',
-      'lat': '40',
-      'lon': '-105',
-      'dataset': 'nsrdb',
-      'radius': '100',
-      'timeframe': 'monthly',
-      'dc_ac_ratio': '1.2',
-      'gcr': '0.4',
-      'inv_eff': '96'},
-     'errors': [],
-     'warnings': [],
-     'version': '1.0.2',
-     'ssc_info': {'version': 45,
-      'build': 'Linux 64 bit GNU/C++ Jul  7 2015 14:24:09'},
-     'station_info': {'lat': 40.0099983215332,
-      'lon': -105.0199966430664,
-      'elev': 1581.839965820312,
-      'tz': -7.0,
-      'location': 'None',
+    {'ac_monthly': [197.7586059570312,
+      281.6268005371094,
+      370.9747619628906,
+      494.173583984375,
+      512.7410888671875,
+      540.3777465820312,
+      592.75146484375,
+      578.3128662109375,
+      484.0272521972656,
+      333.1608276367188,
+      233.0740203857422,
+      186.9368896484375],
+     'poa_monthly': [58.9533576965332,
+      83.970703125,
+      113.2405624389648,
+      153.9364776611328,
+      160.2881927490234,
+      171.4797973632812,
+      192.8575592041016,
+      188.4494323730469,
+      154.3850555419922,
+      102.9901733398438,
+      69.81695556640625,
+      55.09452438354492],
+     'solrad_monthly': [1.901721239089966,
+      2.998953580856323,
+      3.652921438217163,
+      5.131216049194336,
+      5.170587062835693,
+      5.715993404388428,
+      6.221211433410645,
+      6.079013824462891,
+      5.14616870880127,
+      3.322263717651367,
+      2.327231884002686,
+      1.77724277973175],
+     'dc_monthly': [208.4532623291016,
+      295.5293273925781,
+      388.7458190917969,
+      516.7040405273438,
+      536.7205200195312,
+      565.5615234375,
+      619.6510620117188,
+      604.18212890625,
+      505.6007690429688,
+      349.08642578125,
+      244.8111724853516,
+      196.868896484375],
+     'ac_annual': 4805.91552734375,
+     'solrad_annual': 4.120377063751221,
+     'capacity_factor': 13.7155122756958}
+
+
+
+You can also view the details about the station.
+
+```python
+pvwatts_v6.station_info
+```
+
+
+
+
+    {'lat': 47.61000061035156,
+     'lon': -122.3399963378906,
+     'elev': 48.70000076293945,
+     'tz': -8.0,
+     'location': 'None',
+     'city': '',
+     'state': 'Washington',
+     'solar_resource_file': 'W12234N4761.csv',
+     'distance': 1048}
+
+
+
+### SolarResourceData
+
+Get solar resource data for a specific location
+
+```python
+# get solar resource data for a specific latitude and longitude
+solar_resource_data = SolarResourceData(api_key=NREL_API_KEY, lat=40, lon=-105)
+
+# the output data is stored in the outputs attribute
+solar_resource_data.outputs
+```
+
+
+
+
+    {'avg_dni': {'annual': 6.06,
+      'monthly': {'jan': 5.0,
+       'feb': 5.34,
+       'mar': 5.94,
+       'apr': 6.11,
+       'may': 6.36,
+       'jun': 7.43,
+       'jul': 7.48,
+       'aug': 6.65,
+       'sep': 6.81,
+       'oct': 5.82,
+       'nov': 5.11,
+       'dec': 4.67}},
+     'avg_ghi': {'annual': 4.81,
+      'monthly': {'jan': 2.5,
+       'feb': 3.43,
+       'mar': 4.69,
+       'apr': 5.69,
+       'may': 6.6,
+       'jun': 7.25,
+       'jul': 7.14,
+       'aug': 6.24,
+       'sep': 5.35,
+       'oct': 3.85,
+       'nov': 2.75,
+       'dec': 2.19}},
+     'avg_lat_tilt': {'annual': 5.82,
+      'monthly': {'jan': 4.79,
+       'feb': 5.4,
+       'mar': 6.07,
+       'apr': 6.11,
+       'may': 6.25,
+       'jun': 6.47,
+       'jul': 6.58,
+       'aug': 6.44,
+       'sep': 6.53,
+       'oct': 5.71,
+       'nov': 4.99,
+       'dec': 4.47}}}
+
+
+
+### SolarDatasetQuery
+
+Get information on the closest climate data for a location.
+
+```python
+# create a dataset query class
+solar_dataset_query = SolarDatasetQuery(api_key=NREL_API_KEY, address="San Francisco, CA")
+
+# get the output
+solar_dataset_query.outputs
+```
+
+
+
+
+    {'tmy2': {'id': '0-23234',
+      'city': 'SAN FRANCISCO',
+      'state': 'CALIFORNIA',
+      'timezone': -8,
+      'lat': 37.617,
+      'lon': -122.4,
+      'elevation': 2,
+      'distance': 18362},
+     'tmy3': {'id': '1-724940',
+      'city': 'SAN FRANCISCO INTL AP',
+      'state': 'CALIFORNIA',
+      'timezone': -8,
+      'lat': 37.617,
+      'lon': -122.4,
+      'elevation': 2,
+      'distance': 18362},
+     'intl': None,
+     'nsrdb': {'id': '3-W122N037-W12242N3777',
       'city': '',
-      'state': 'Colorado',
-      'solar_resource_file': 'W10502N4001.csv',
-      'distance': 2029},
-     'outputs': {'ac_monthly': [474.4326171875,
-       484.3903503417969,
-       595.7704467773438,
-       592.0599365234375,
-       591.2662353515625,
-       589.3538208007812,
-       583.2352905273438,
-       586.4593505859375,
-       584.8131713867188,
-       561.72314453125,
-       486.1260375976562,
-       445.6881713867188],
-      'poa_monthly': [141.4809417724609,
-       145.5711975097656,
-       184.7876434326172,
-       181.5513763427734,
-       186.4280853271484,
-       190.5132904052734,
-       188.7499694824219,
-       190.5398101806641,
-       188.2213134765625,
-       175.4444122314453,
-       146.3170471191406,
-       131.1568298339844],
-      'solrad_monthly': [4.563901424407959,
-       5.198971271514893,
-       5.960891723632812,
-       6.051712512969971,
-       6.013809204101562,
-       6.350442886352539,
-       6.088708877563477,
-       6.146445274353027,
-       6.274043560028076,
-       5.659497261047363,
-       4.877234935760498,
-       4.230865478515625],
-      'dc_monthly': [497.9421081542969,
-       511.1524963378906,
-       634.3223266601562,
-       623.7313842773438,
-       617.8812866210938,
-       615.4278564453125,
-       609.3965454101562,
-       612.7506713867188,
-       610.5584106445312,
-       588.6157836914062,
-       508.0747680664062,
-       465.4272155761719],
-      'ac_annual': 6575.31884765625,
-      'solrad_annual': 5.618043899536133,
-      'capacity_factor': 18.76517868041992}}
+      'state': 'California',
+      'country': None,
+      'lat': 37.77,
+      'lon': -122.42,
+      'distance': 1129,
+      'timezone': -8,
+      'elevation': 55,
+      'resolution': 4}}
 
 
