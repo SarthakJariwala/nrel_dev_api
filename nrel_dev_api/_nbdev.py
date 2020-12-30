@@ -7,7 +7,7 @@ index = {"BASE_URL": "00_core.ipynb",
          "SolarDatasetQuery": "02_solar.dataset_query.ipynb",
          "PVWattsV6": "03_solar.pvwatts_v6.ipynb"}
 
-modules = ["core.py",
+modules = ["_core.py",
            "solar/resource_data.py",
            "solar/dataset_query.py",
            "solar/pvwatts_v6.py"]

@@ -3,7 +3,7 @@
 __all__ = ['PVWattsV6']
 
 # Cell
-from ..core import _GetPostRequest
+from .._core import _GetPostRequest
 
 # TODO - add attributes in docstring, add checks for data inputs
 class PVWattsV6(_GetPostRequest):
