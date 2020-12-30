@@ -3,12 +3,14 @@
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"BASE_URL": "00_core.ipynb",
-         "SolarResourceData": "01_solar.ipynb",
-         "PVWattsV6": "01_solar.ipynb",
-         "SolarDatasetQuery": "01_solar.ipynb"}
+         "SolarResourceData": "01_solar.resource_data.ipynb",
+         "SolarDatasetQuery": "02_solar.dataset_query.ipynb",
+         "PVWattsV6": "03_solar.pvwatts_v6.ipynb"}
 
 modules = ["core.py",
-           "solar.py"]
+           "solar/resource_data.py",
+           "solar/dataset_query.py",
+           "solar/pvwatts_v6.py"]
 
 doc_url = "https://sarthakjariwala.github.io/nrel_dev_api/"
 

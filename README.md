@@ -1,5 +1,5 @@
 # nrel-dev-api
-> Python API for NREL (National Renewable Energy Lab) developer API.
+> Access data and analysis services that NREL (National Renewable Energy Lab) provides using a python API.
 
 
 *NOTE: In order to use the NREL developer API, you will need an API key from NREL. You can get one [here](https://developer.nrel.gov/signup/). The process is simple and only requires your name and email (where you will receive the API key).*
@@ -15,6 +15,8 @@
 Estimate the energy production of grid-connected photovoltaic (PV) energy systems using NREL's PVWatts V6 API based on a few simple location and system inputs.
 
 ```python
+from nrel_dev_api.solar import PVWattsV6
+
 # create PVWattsV6 class and pass the necessary location and system inputs
 pvwatts_v6 = PVWattsV6(api_key=NREL_API_KEY,
                        system_capacity=4,
@@ -113,6 +115,8 @@ pvwatts_v6.station_info
 Get solar resource data for a specific location
 
 ```python
+from nrel_dev_api.solar import SolarResourceData
+
 # get solar resource data for a specific latitude and longitude
 solar_resource_data = SolarResourceData(api_key=NREL_API_KEY, lat=40, lon=-105)
 
@@ -170,6 +174,8 @@ solar_resource_data.outputs
 Get information on the closest climate data for a location.
 
 ```python
+from nrel_dev_api.solar import SolarDatasetQuery
+
 # create a dataset query class
 solar_dataset_query = SolarDatasetQuery(api_key=NREL_API_KEY, address="San Francisco, CA")
 

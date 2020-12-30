@@ -13,8 +13,14 @@ entries:
       title: Core
       url: core.html
     - output: web,pdf
-      title: Solar
-      url: solar.html
+      title: SolarResourceData
+      url: solar.resource_data.html
+    - output: web,pdf
+      title: SolarDatasetQuery
+      url: solar.dataset_query.html
+    - output: web,pdf
+      title: PVWatts V6
+      url: solar.pvwatts_v6.html
     output: web
     title: nrel_dev_api
   output: web

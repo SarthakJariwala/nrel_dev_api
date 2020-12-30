@@ -2,6 +2,8 @@
   "nrel_dev_api": {
     "Overview": "/",
     "Core": "core.html",
-    "Solar": "solar.html"
+    "SolarResourceData": "solar.resource_data.html",
+    "SolarDatasetQuery": "solar.dataset_query.html",
+    "PVWatts V6": "solar.pvwatts_v6.html"
   }
 }
