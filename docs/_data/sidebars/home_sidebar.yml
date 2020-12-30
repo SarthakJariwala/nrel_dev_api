@@ -21,6 +21,9 @@ entries:
     - output: web,pdf
       title: PVWatts V6
       url: solar.pvwatts_v6.html
+    - output: web,pdf
+      title: National Solar Radiation Database (NSRDB)
+      url: solar.nsrdb.html
     output: web
     title: nrel_dev_api
   output: web

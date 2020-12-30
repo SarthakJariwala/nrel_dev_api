@@ -26,6 +26,6 @@ class _GetPostRequest:
         content = resp.json()
 
         # if any warnings are encountered, bring them up to the user
-        if content["warnings"]:
+        if content.get("warnings"):
             warnings.warn(message=str(content["warnings"]), category=UserWarning)
         return content
