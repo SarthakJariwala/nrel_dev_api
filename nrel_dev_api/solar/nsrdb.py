@@ -3,9 +3,9 @@
 __all__ = ['NSRDB_DataQuery']
 
 # Cell
-from .._core import _GetPostRequest
+from .._core import get_request
 
-class NSRDB_DataQuery(_GetPostRequest):
+class NSRDB_DataQuery:
     """Returns information on the closest NSRDB datasets for a location
     including a set of links that can be used to download the data.
     """
@@ -22,9 +22,7 @@ class NSRDB_DataQuery(_GetPostRequest):
                  show_empty=False,
                 ):
 
-        super().__init__()
-
-        self._params.update({"api_key": api_key})
+        self._params = {"api_key": api_key}
 
         # if well-known text is not provided look for address or lat/lon
         if not wkt:
@@ -41,7 +39,9 @@ class NSRDB_DataQuery(_GetPostRequest):
         if show_empty:
             self._params.update({"show_empty" : show_empty})
 
+        r = get_request(self.QUERY_URL, self._params)
+
         # complete response as a dictionary
-        self.response = self._get()
+        self.response = r.json()
 
         self.outputs = self.response["outputs"]

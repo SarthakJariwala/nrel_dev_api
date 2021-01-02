@@ -90,6 +90,72 @@ nb_path: "index.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;ac_monthly&#39;: [197.7586059570312,
+  281.6268005371094,
+  370.9747619628906,
+  494.173583984375,
+  512.7410888671875,
+  540.3777465820312,
+  592.75146484375,
+  578.3128662109375,
+  484.0272521972656,
+  333.1608276367188,
+  233.0740203857422,
+  186.9368896484375],
+ &#39;poa_monthly&#39;: [58.9533576965332,
+  83.970703125,
+  113.2405624389648,
+  153.9364776611328,
+  160.2881927490234,
+  171.4797973632812,
+  192.8575592041016,
+  188.4494323730469,
+  154.3850555419922,
+  102.9901733398438,
+  69.81695556640625,
+  55.09452438354492],
+ &#39;solrad_monthly&#39;: [1.901721239089966,
+  2.998953580856323,
+  3.652921438217163,
+  5.131216049194336,
+  5.170587062835693,
+  5.715993404388428,
+  6.221211433410645,
+  6.079013824462891,
+  5.14616870880127,
+  3.322263717651367,
+  2.327231884002686,
+  1.77724277973175],
+ &#39;dc_monthly&#39;: [208.4532623291016,
+  295.5293273925781,
+  388.7458190917969,
+  516.7040405273438,
+  536.7205200195312,
+  565.5615234375,
+  619.6510620117188,
+  604.18212890625,
+  505.6007690429688,
+  349.08642578125,
+  244.8111724853516,
+  196.868896484375],
+ &#39;ac_annual&#39;: 4805.91552734375,
+ &#39;solrad_annual&#39;: 4.120377063751221,
+ &#39;capacity_factor&#39;: 13.7155122756958}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -143,8 +209,178 @@ nb_path: "index.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="SolarResourceData">SolarResourceData<a class="anchor-link" href="#SolarResourceData"> </a></h3><p>Get solar resource data for a specific location</p>
+<h3 id="Query-National-Solar-Radiation-Database-(NSRDB)">Query National Solar Radiation Database (NSRDB)<a class="anchor-link" href="#Query-National-Solar-Radiation-Database-(NSRDB)"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nrel_dev_api.solar</span> <span class="kn">import</span> <span class="n">NSRDB_DataQuery</span>
+
+<span class="n">nsrdb_data_query</span> <span class="o">=</span> <span class="n">NSRDB_DataQuery</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">NREL_API_KEY</span><span class="p">,</span> <span class="n">wkt</span><span class="o">=</span><span class="s2">&quot;POINT(91.287 23.832)&quot;</span><span class="p">)</span>
+
+<span class="c1"># check the outputs</span>
+<span class="n">nsrdb_data_query</span><span class="o">.</span><span class="n">outputs</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[{&#39;apiDocs&#39;: &#39;https://developer.nrel.gov/docs/solar/nsrdb/msg-iodc/&#39;,
+  &#39;availableIntervals&#39;: [15, 30, 60],
+  &#39;enabled&#39;: True,
+  &#39;displayName&#39;: &#39;MSG IODC: PSM v3&#39;,
+  &#39;metadataLink&#39;: &#39;https://nsrdb.nrel.gov/current-version&#39;,
+  &#39;name&#39;: &#39;msg-iodc&#39;,
+  &#39;ranking&#39;: 20,
+  &#39;availableYears&#39;: [2017, 2018, 2019],
+  &#39;apiUrl&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/msg-iodc-download&#39;,
+  &#39;links&#39;: [{&#39;year&#39;: 2017,
+    &#39;interval&#39;: 15,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/msg-iodc-download.csv?names=2017&amp;wkt=POINT%2891.287+23.832%29&amp;interval=15&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2018,
+    &#39;interval&#39;: 15,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/msg-iodc-download.csv?names=2018&amp;wkt=POINT%2891.287+23.832%29&amp;interval=15&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2019,
+    &#39;interval&#39;: 15,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/msg-iodc-download.csv?names=2019&amp;wkt=POINT%2891.287+23.832%29&amp;interval=15&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2017,
+    &#39;interval&#39;: 30,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/msg-iodc-download.csv?names=2017&amp;wkt=POINT%2891.287+23.832%29&amp;interval=30&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2018,
+    &#39;interval&#39;: 30,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/msg-iodc-download.csv?names=2018&amp;wkt=POINT%2891.287+23.832%29&amp;interval=30&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2019,
+    &#39;interval&#39;: 30,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/msg-iodc-download.csv?names=2019&amp;wkt=POINT%2891.287+23.832%29&amp;interval=30&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2017,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/msg-iodc-download.csv?names=2017&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2018,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/msg-iodc-download.csv?names=2018&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2019,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/msg-iodc-download.csv?names=2019&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;}]},
+ {&#39;apiDocs&#39;: &#39;https://developer.nrel.gov/docs/solar/nsrdb/spectral-tmy-india-download/&#39;,
+  &#39;availableIntervals&#39;: [60],
+  &#39;enabled&#39;: True,
+  &#39;displayName&#39;: &#39;SUNY International Spectral&#39;,
+  &#39;metadataLink&#39;: &#39;https://nsrdb.nrel.gov&#39;,
+  &#39;name&#39;: &#39;spectral-india-tmy&#39;,
+  &#39;ranking&#39;: 40,
+  &#39;availableYears&#39;: [&#39;tmy&#39;],
+  &#39;apiUrl&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/spectral-india-tmy-download&#39;,
+  &#39;links&#39;: [{&#39;year&#39;: &#39;tmy&#39;,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/spectral-india-tmy-download.csv?names=tmy&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;}]},
+ {&#39;apiDocs&#39;: &#39;https://developer.nrel.gov/docs/solar/nsrdb/suny-india-data-download/&#39;,
+  &#39;availableIntervals&#39;: [60],
+  &#39;enabled&#39;: True,
+  &#39;displayName&#39;: &#39;SUNY International&#39;,
+  &#39;metadataLink&#39;: &#39;https://nsrdb.nrel.gov&#39;,
+  &#39;name&#39;: &#39;suny-india&#39;,
+  &#39;ranking&#39;: 20,
+  &#39;availableYears&#39;: [2000,
+   2001,
+   2002,
+   2003,
+   2004,
+   2005,
+   2006,
+   2007,
+   2008,
+   2009,
+   2010,
+   2011,
+   2012,
+   2013,
+   2014],
+  &#39;apiUrl&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download&#39;,
+  &#39;links&#39;: [{&#39;year&#39;: 2000,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2000&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2001,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2001&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2002,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2002&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2003,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2003&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2004,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2004&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2005,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2005&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2006,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2006&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2007,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2007&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2008,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2008&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2009,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2009&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2010,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2010&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2011,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2011&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2012,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2012&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2013,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2013&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;},
+   {&#39;year&#39;: 2014,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-download.csv?names=2014&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;}]},
+ {&#39;apiDocs&#39;: &#39;https://developer.nrel.gov/docs/solar/nsrdb/suny-india-tmy-data-download/&#39;,
+  &#39;availableIntervals&#39;: [60],
+  &#39;enabled&#39;: True,
+  &#39;displayName&#39;: &#39;SUNY International TMY&#39;,
+  &#39;metadataLink&#39;: &#39;https://nsrdb.nrel.gov&#39;,
+  &#39;name&#39;: &#39;suny-india-tmy&#39;,
+  &#39;ranking&#39;: 20,
+  &#39;availableYears&#39;: [&#39;tmy&#39;],
+  &#39;apiUrl&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-tmy-download&#39;,
+  &#39;links&#39;: [{&#39;year&#39;: &#39;tmy&#39;,
+    &#39;interval&#39;: 60,
+    &#39;link&#39;: &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-tmy-download.csv?names=tmy&amp;wkt=POINT%2891.287+23.832%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;}]}]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Get-solar-resource-data-for-a-specific-location">Get solar resource data for a specific location<a class="anchor-link" href="#Get-solar-resource-data-for-a-specific-location"> </a></h3>
 </div>
 </div>
 </div>
@@ -168,13 +404,66 @@ nb_path: "index.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;avg_dni&#39;: {&#39;annual&#39;: 6.06,
+  &#39;monthly&#39;: {&#39;jan&#39;: 5.0,
+   &#39;feb&#39;: 5.34,
+   &#39;mar&#39;: 5.94,
+   &#39;apr&#39;: 6.11,
+   &#39;may&#39;: 6.36,
+   &#39;jun&#39;: 7.43,
+   &#39;jul&#39;: 7.48,
+   &#39;aug&#39;: 6.65,
+   &#39;sep&#39;: 6.81,
+   &#39;oct&#39;: 5.82,
+   &#39;nov&#39;: 5.11,
+   &#39;dec&#39;: 4.67}},
+ &#39;avg_ghi&#39;: {&#39;annual&#39;: 4.81,
+  &#39;monthly&#39;: {&#39;jan&#39;: 2.5,
+   &#39;feb&#39;: 3.43,
+   &#39;mar&#39;: 4.69,
+   &#39;apr&#39;: 5.69,
+   &#39;may&#39;: 6.6,
+   &#39;jun&#39;: 7.25,
+   &#39;jul&#39;: 7.14,
+   &#39;aug&#39;: 6.24,
+   &#39;sep&#39;: 5.35,
+   &#39;oct&#39;: 3.85,
+   &#39;nov&#39;: 2.75,
+   &#39;dec&#39;: 2.19}},
+ &#39;avg_lat_tilt&#39;: {&#39;annual&#39;: 5.82,
+  &#39;monthly&#39;: {&#39;jan&#39;: 4.79,
+   &#39;feb&#39;: 5.4,
+   &#39;mar&#39;: 6.07,
+   &#39;apr&#39;: 6.11,
+   &#39;may&#39;: 6.25,
+   &#39;jun&#39;: 6.47,
+   &#39;jul&#39;: 6.58,
+   &#39;aug&#39;: 6.44,
+   &#39;sep&#39;: 6.53,
+   &#39;oct&#39;: 5.71,
+   &#39;nov&#39;: 4.99,
+   &#39;dec&#39;: 4.47}}}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="SolarDatasetQuery">SolarDatasetQuery<a class="anchor-link" href="#SolarDatasetQuery"> </a></h3><p>Get information on the closest climate data for a location.</p>
-
+<h3 id="Get-information-on-the-closest-climate-data-for-a-location.">Get information on the closest climate data for a location.<a class="anchor-link" href="#Get-information-on-the-closest-climate-data-for-a-location."> </a></h3>
 </div>
 </div>
 </div>
@@ -195,6 +484,48 @@ nb_path: "index.ipynb"
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;tmy2&#39;: {&#39;id&#39;: &#39;0-23234&#39;,
+  &#39;city&#39;: &#39;SAN FRANCISCO&#39;,
+  &#39;state&#39;: &#39;CALIFORNIA&#39;,
+  &#39;timezone&#39;: -8,
+  &#39;lat&#39;: 37.617,
+  &#39;lon&#39;: -122.4,
+  &#39;elevation&#39;: 2,
+  &#39;distance&#39;: 18362},
+ &#39;tmy3&#39;: {&#39;id&#39;: &#39;1-724940&#39;,
+  &#39;city&#39;: &#39;SAN FRANCISCO INTL AP&#39;,
+  &#39;state&#39;: &#39;CALIFORNIA&#39;,
+  &#39;timezone&#39;: -8,
+  &#39;lat&#39;: 37.617,
+  &#39;lon&#39;: -122.4,
+  &#39;elevation&#39;: 2,
+  &#39;distance&#39;: 18362},
+ &#39;intl&#39;: None,
+ &#39;nsrdb&#39;: {&#39;id&#39;: &#39;3-W122N037-W12242N3777&#39;,
+  &#39;city&#39;: &#39;&#39;,
+  &#39;state&#39;: &#39;California&#39;,
+  &#39;country&#39;: None,
+  &#39;lat&#39;: 37.77,
+  &#39;lon&#39;: -122.42,
+  &#39;distance&#39;: 1129,
+  &#39;timezone&#39;: -8,
+  &#39;elevation&#39;: 55,
+  &#39;resolution&#39;: 4}}</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 

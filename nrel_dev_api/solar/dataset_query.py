@@ -3,10 +3,10 @@
 __all__ = ['SolarDatasetQuery']
 
 # Cell
-from .._core import _GetPostRequest
+from .._core import get_request
 
 # TODO - add attributes in docstring, add checks for data inputs
-class SolarDatasetQuery(_GetPostRequest):
+class SolarDatasetQuery:
 
     """Returns information on the closest climate data for a location.
     """
@@ -22,13 +22,11 @@ class SolarDatasetQuery(_GetPostRequest):
                  return_all_stations=False,
                 ):
 
-        super().__init__()
-
-        self._params.update({
+        self._params = {
             "api_key" : api_key,
             "radius" : radius,
             "all" : 0 if return_all_stations is False else 1,
-        })
+        }
 
         # if address is not specified latitude and longitude must be specified
         if not address:
@@ -36,7 +34,11 @@ class SolarDatasetQuery(_GetPostRequest):
         else:
             self._params.update({"address": address})
 
-        self.response = self._get()
+        # response
+        r = get_request(self.QUERY_URL, self._params)
+
+        # response as a dict
+        self.response = r.json()
 
         # only outputs
         self.outputs = self.response["outputs"]

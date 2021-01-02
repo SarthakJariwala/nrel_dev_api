@@ -3,10 +3,10 @@
 __all__ = ['PVWattsV6']
 
 # Cell
-from .._core import _GetPostRequest
+from .._core import get_request
 
 # TODO - add attributes in docstring, add checks for data inputs
-class PVWattsV6(_GetPostRequest):
+class PVWattsV6:
     """Estimate the energy production of grid-connected photovoltaic (PV) energy systems
     using NREL's PVWatts API based on a few simple inputs.
     """
@@ -33,9 +33,7 @@ class PVWattsV6(_GetPostRequest):
                  inv_eff=96,
                 ):
 
-        super().__init__()
-
-        self._params.update({
+        self._params = {
             "api_key" : api_key,
             "system_capacity" : system_capacity,
             "module_type" : module_type,
@@ -43,7 +41,7 @@ class PVWattsV6(_GetPostRequest):
             "array_type" : array_type,
             "tilt" : tilt,
             "azimuth" : azimuth,
-        })
+        }
 
         # only one of lat/lon, file_id, address needs to be specified
         if not address and not file_id:
@@ -67,8 +65,10 @@ class PVWattsV6(_GetPostRequest):
             "inv_eff" : inv_eff
         })
 
-        # get the complete response
-        self.response = self._get()
+        r = get_request(self.QUERY_URL, self._params)
+
+        # get the complete response as dict
+        self.response = r.json()
 
         # only the outputs category
         self.outputs = self.response["outputs"]

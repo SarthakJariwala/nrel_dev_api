@@ -3,30 +3,21 @@
 __all__ = ['SolarResourceData']
 
 # Cell
-from .._core import _GetPostRequest
+from .._core import get_request
 
 # TODO - add attributes in docstring, add checks for data inputs
-class SolarResourceData(_GetPostRequest):
+class SolarResourceData:
     """Returns various types of solar data for a location as a dictionary.
     The service from NREL currently returns data for
     average Direct Normal Irradiance, average Global Horizontal Irradiance,
     and average Tilt at Latitude.
-
-    Attributes:
-
-        api_key: NREL Developer API key (https://developer.nrel.gov/signup/).
-        lat: Latitude of the location.
-        lon: Longitude of the location.
-        address: Address of the location to use. Required if lat/lon not specified.
     """
 
     QUERY_URL = "/api/solar/solar_resource/v1.json"
 
     def __init__(self, api_key, lat=None, lon=None, address=None):
 
-        super().__init__()
-
-        self._params.update({"api_key": api_key})
+        self._params = {"api_key": api_key}
 
         # if address is not specified latitude and longitude must be specified
         if not address:
@@ -34,8 +25,11 @@ class SolarResourceData(_GetPostRequest):
         else:
             self._params.update({"address": address})
 
+        # complete raw response as a dict
+        r = get_request(self.QUERY_URL, self._params)
+
         # complete response as a dict
-        self.response = self._get()
+        self.response = r.json()
 
         # only the outputs
         self.outputs = self.response["outputs"]

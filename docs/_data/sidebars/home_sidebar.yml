@@ -13,13 +13,13 @@ entries:
       title: Core
       url: core.html
     - output: web,pdf
-      title: SolarResourceData
+      title: Solar Resource Data
       url: solar.resource_data.html
     - output: web,pdf
-      title: SolarDatasetQuery
+      title: Solar Dataset Query
       url: solar.dataset_query.html
     - output: web,pdf
-      title: PVWatts V6
+      title: PV Watts V6
       url: solar.pvwatts_v6.html
     - output: web,pdf
       title: National Solar Radiation Database (NSRDB)

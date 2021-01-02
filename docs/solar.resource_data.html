@@ -1,6 +1,6 @@
 ---
 
-title: SolarResourceData
+title: Solar Resource Data
 
 
 keywords: fastai
@@ -40,18 +40,12 @@ nb_path: "01_solar.resource_data.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="SolarResourceData" class="doc_header"><code>class</code> <code>SolarResourceData</code><a href="https://github.com/sarthakjariwala/nrel_dev_api/tree/master/nrel_dev_api/solar/resource_data.py#L9" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SolarResourceData</code>(<strong><code>api_key</code></strong>, <strong><code>lat</code></strong>=<em><code>None</code></em>, <strong><code>lon</code></strong>=<em><code>None</code></em>, <strong><code>address</code></strong>=<em><code>None</code></em>) :: <code>_GetPostRequest</code></p>
+<h2 id="SolarResourceData" class="doc_header"><code>class</code> <code>SolarResourceData</code><a href="https://github.com/sarthakjariwala/nrel_dev_api/tree/master/nrel_dev_api/solar/resource_data.py#L9" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SolarResourceData</code>(<strong><code>api_key</code></strong>, <strong><code>lat</code></strong>=<em><code>None</code></em>, <strong><code>lon</code></strong>=<em><code>None</code></em>, <strong><code>address</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Returns various types of solar data for a location as a dictionary.
 The service from NREL currently returns data for
 average Direct Normal Irradiance, average Global Horizontal Irradiance,
 and average Tilt at Latitude.</p>
-<p>Attributes:</p>
-
-<pre><code>api_key: NREL Developer API key (https://developer.nrel.gov/signup/).
-lat: Latitude of the location.
-lon: Longitude of the location.
-address: Address of the location to use. Required if lat/lon not specified.</code></pre>
 
 </div>
 
