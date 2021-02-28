@@ -3,7 +3,7 @@
 __all__ = ['SolarDatasetQuery']
 
 # Cell
-from .._core import get_request
+from .._core import get_request, check_api_key
 
 # TODO - add attributes in docstring, add checks for data inputs
 class SolarDatasetQuery:
@@ -14,13 +14,17 @@ class SolarDatasetQuery:
     QUERY_URL = "/api/solar/data_query/v1.json"
 
     def __init__(self,
-                 api_key,
+                 api_key=None,
                  lat=None,
                  lon=None,
                  address=None,
                  radius=100,
                  return_all_stations=False,
                 ):
+
+        if api_key is None:
+            # check if API key is already set
+            api_key = check_api_key()
 
         self._params = {
             "api_key" : api_key,

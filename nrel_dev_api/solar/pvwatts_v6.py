@@ -3,7 +3,7 @@
 __all__ = ['PVWattsV6']
 
 # Cell
-from .._core import get_request
+from .._core import get_request, check_api_key
 
 # TODO - add attributes in docstring, add checks for data inputs
 class PVWattsV6:
@@ -14,13 +14,13 @@ class PVWattsV6:
     QUERY_URL = "/api/pvwatts/v6.json"
 
     def __init__(self,
-                 api_key,
                  system_capacity,
                  module_type,
                  losses,
                  array_type,
                  tilt,
                  azimuth,
+                 api_key=None,
                  lat=None,
                  lon=None,
                  address=None,
@@ -32,6 +32,9 @@ class PVWattsV6:
                  gcr=0.4,
                  inv_eff=96,
                 ):
+
+        if api_key is None:
+            api_key = check_api_key()
 
         self._params = {
             "api_key" : api_key,

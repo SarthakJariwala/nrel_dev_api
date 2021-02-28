@@ -40,7 +40,7 @@ nb_path: "01_solar.resource_data.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="SolarResourceData" class="doc_header"><code>class</code> <code>SolarResourceData</code><a href="https://github.com/sarthakjariwala/nrel_dev_api/tree/master/nrel_dev_api/solar/resource_data.py#L9" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SolarResourceData</code>(<strong><code>api_key</code></strong>, <strong><code>lat</code></strong>=<em><code>None</code></em>, <strong><code>lon</code></strong>=<em><code>None</code></em>, <strong><code>address</code></strong>=<em><code>None</code></em>)</p>
+<h2 id="SolarResourceData" class="doc_header"><code>class</code> <code>SolarResourceData</code><a href="https://github.com/sarthakjariwala/nrel_dev_api/tree/master/nrel_dev_api/solar/resource_data.py#L9" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>SolarResourceData</code>(<strong><code>api_key</code></strong>=<em><code>None</code></em>, <strong><code>lat</code></strong>=<em><code>None</code></em>, <strong><code>lon</code></strong>=<em><code>None</code></em>, <strong><code>address</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Returns various types of solar data for a location as a dictionary.
 The service from NREL currently returns data for
@@ -71,6 +71,13 @@ and average Tilt at Latitude.</p>
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First, let's set our NREL API key.</p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -78,7 +85,9 @@ and average Tilt at Latitude.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">solar_resource_data</span> <span class="o">=</span> <span class="n">SolarResourceData</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">NREL_API_KEY</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">lon</span><span class="o">=-</span><span class="mi">105</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nrel_dev_api</span> <span class="kn">import</span> <span class="n">set_nrel_api_key</span>
+
+<span class="n">set_nrel_api_key</span><span class="p">(</span><span class="n">NREL_API_KEY</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -90,7 +99,39 @@ and average Tilt at Latitude.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Outputs for solar resource data</p>
+<blockquote><p>Alternatively, you can provide your NREL Developer API key with every call. Setting it globally is just for convenience.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's check available solar resource data for Seattle, WA.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">solar_resource_data</span> <span class="o">=</span> <span class="n">SolarResourceData</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="mi">47</span><span class="p">,</span> <span class="n">lon</span><span class="o">=-</span><span class="mi">122</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Outputs for solar resource data is available as the <code>outputs</code> attribute.</p>
 
 </div>
 </div>
@@ -109,12 +150,66 @@ and average Tilt at Latitude.</p>
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;avg_dni&#39;: {&#39;annual&#39;: 3.2,
+  &#39;monthly&#39;: {&#39;jan&#39;: 1.77,
+   &#39;feb&#39;: 2.51,
+   &#39;mar&#39;: 2.28,
+   &#39;apr&#39;: 3.29,
+   &#39;may&#39;: 3.33,
+   &#39;jun&#39;: 3.65,
+   &#39;jul&#39;: 5.75,
+   &#39;aug&#39;: 5.14,
+   &#39;sep&#39;: 4.62,
+   &#39;oct&#39;: 2.53,
+   &#39;nov&#39;: 1.74,
+   &#39;dec&#39;: 1.7}},
+ &#39;avg_ghi&#39;: {&#39;annual&#39;: 3.26,
+  &#39;monthly&#39;: {&#39;jan&#39;: 1.09,
+   &#39;feb&#39;: 1.89,
+   &#39;mar&#39;: 2.61,
+   &#39;apr&#39;: 4.05,
+   &#39;may&#39;: 4.66,
+   &#39;jun&#39;: 5.1,
+   &#39;jul&#39;: 6.11,
+   &#39;aug&#39;: 5.17,
+   &#39;sep&#39;: 3.95,
+   &#39;oct&#39;: 2.17,
+   &#39;nov&#39;: 1.25,
+   &#39;dec&#39;: 0.97}},
+ &#39;avg_lat_tilt&#39;: {&#39;annual&#39;: 3.78,
+  &#39;monthly&#39;: {&#39;jan&#39;: 2.13,
+   &#39;feb&#39;: 3.07,
+   &#39;mar&#39;: 3.24,
+   &#39;apr&#39;: 4.3,
+   &#39;may&#39;: 4.36,
+   &#39;jun&#39;: 4.54,
+   &#39;jul&#39;: 5.71,
+   &#39;aug&#39;: 5.44,
+   &#39;sep&#39;: 5.04,
+   &#39;oct&#39;: 3.23,
+   &#39;nov&#39;: 2.24,
+   &#39;dec&#39;: 2.05}}}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Use address to access the solar resource data</p>
+<p>We can also provide the address to access the solar resource data.</p>
 
 </div>
 </div>
@@ -128,7 +223,7 @@ and average Tilt at Latitude.</p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">address</span> <span class="o">=</span> <span class="s2">&quot;Seattle, WA&quot;</span>
 
-<span class="n">solar_resource_data</span> <span class="o">=</span> <span class="n">SolarResourceData</span><span class="p">(</span><span class="n">api_key</span><span class="o">=</span><span class="n">NREL_API_KEY</span><span class="p">,</span> <span class="n">address</span><span class="o">=</span><span class="n">address</span><span class="p">)</span>
+<span class="n">solar_resource_data</span> <span class="o">=</span> <span class="n">SolarResourceData</span><span class="p">(</span><span class="n">address</span><span class="o">=</span><span class="n">address</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -140,7 +235,7 @@ and average Tilt at Latitude.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Get the complete response as a dictionary</p>
+<p>The complete response as a dictionary is available as the <code>response</code> attribute.</p>
 
 </div>
 </div>
@@ -156,6 +251,65 @@ and average Tilt at Latitude.</p>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;version&#39;: &#39;1.0.0&#39;,
+ &#39;warnings&#39;: [],
+ &#39;errors&#39;: [],
+ &#39;metadata&#39;: {&#39;sources&#39;: [&#39;Perez-SUNY/NREL, 2012&#39;]},
+ &#39;inputs&#39;: {&#39;address&#39;: &#39;Seattle, WA&#39;},
+ &#39;outputs&#39;: {&#39;avg_dni&#39;: {&#39;annual&#39;: 3.5,
+   &#39;monthly&#39;: {&#39;jan&#39;: 1.19,
+    &#39;feb&#39;: 2.73,
+    &#39;mar&#39;: 2.16,
+    &#39;apr&#39;: 3.76,
+    &#39;may&#39;: 4.21,
+    &#39;jun&#39;: 5.14,
+    &#39;jul&#39;: 6.66,
+    &#39;aug&#39;: 5.97,
+    &#39;sep&#39;: 5.12,
+    &#39;oct&#39;: 2.51,
+    &#39;nov&#39;: 1.34,
+    &#39;dec&#39;: 1.21}},
+  &#39;avg_ghi&#39;: {&#39;annual&#39;: 3.46,
+   &#39;monthly&#39;: {&#39;jan&#39;: 0.98,
+    &#39;feb&#39;: 1.94,
+    &#39;mar&#39;: 2.75,
+    &#39;apr&#39;: 4.51,
+    &#39;may&#39;: 5.34,
+    &#39;jun&#39;: 5.99,
+    &#39;jul&#39;: 6.38,
+    &#39;aug&#39;: 5.48,
+    &#39;sep&#39;: 4.03,
+    &#39;oct&#39;: 2.11,
+    &#39;nov&#39;: 1.12,
+    &#39;dec&#39;: 0.84}},
+  &#39;avg_lat_tilt&#39;: {&#39;annual&#39;: 3.98,
+   &#39;monthly&#39;: {&#39;jan&#39;: 1.73,
+    &#39;feb&#39;: 3.25,
+    &#39;mar&#39;: 3.43,
+    &#39;apr&#39;: 4.95,
+    &#39;may&#39;: 5.13,
+    &#39;jun&#39;: 5.43,
+    &#39;jul&#39;: 5.98,
+    &#39;aug&#39;: 5.87,
+    &#39;sep&#39;: 5.23,
+    &#39;oct&#39;: 3.18,
+    &#39;nov&#39;: 1.91,
+    &#39;dec&#39;: 1.65}}}}</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 

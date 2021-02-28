@@ -3,7 +3,7 @@
 __all__ = ['NSRDB_DataQuery']
 
 # Cell
-from .._core import get_request
+from .._core import get_request, check_api_key
 
 class NSRDB_DataQuery:
     """Returns information on the closest NSRDB datasets for a location
@@ -13,7 +13,7 @@ class NSRDB_DataQuery:
     QUERY_URL = "/api/solar/nsrdb_data_query.json"
 
     def __init__(self,
-                 api_key,
+                 api_key=None,
                  wkt=None,
                  address=None,
                  lat=None,
@@ -21,6 +21,9 @@ class NSRDB_DataQuery:
                  dataset_type=None,
                  show_empty=False,
                 ):
+
+        if api_key is None:
+            api_key = check_api_key()
 
         self._params = {"api_key": api_key}
 

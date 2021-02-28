@@ -4,6 +4,8 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"get_request": "00_core.ipynb",
          "BASE_URL": "00_core.ipynb",
+         "set_nrel_api_key": "00_core.ipynb",
+         "check_api_key": "00_core.ipynb",
          "SolarResourceData": "01_solar.resource_data.ipynb",
          "SolarDatasetQuery": "02_solar.dataset_query.ipynb",
          "PVWattsV6": "03_solar.pvwatts_v6.ipynb",
