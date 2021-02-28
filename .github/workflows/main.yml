@@ -30,4 +30,5 @@ jobs:
         if [ -n "$(nbdev_diff_nbs)" ]; then echo -e "!!! Detected difference between the notebooks and the library"; false; fi
     - name: Run tests
       run: |
+        export NREL_API_KEY=${{ secrets.NREL_API_KEY }}
         nbdev_test_nbs
