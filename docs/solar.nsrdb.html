@@ -31,7 +31,8 @@ nb_path: "04_solar.nsrdb.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-Query">Data Query<a class="anchor-link" href="#Data-Query"> </a></h2><p>Find NSRDB datasets for a location</p>
+<h2 id="Data-Query">Data Query<a class="anchor-link" href="#Data-Query"> </a></h2><blockquote><p>Find NSRDB datasets for a location</p>
+</blockquote>
 
 </div>
 </div>
@@ -471,12 +472,300 @@ including a set of links that can be used to download the data.</p>
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Data-Downloader">Data Downloader<a class="anchor-link" href="#Data-Downloader"> </a></h2><blockquote><p>Download solar irradiance and meteorological data (including spectral data) for a location</p>
+<h2 id="Data-Downloader">Data Downloader<a class="anchor-link" href="#Data-Downloader"> </a></h2><blockquote><p>Download solar irradiance and meteorological data for a location.</p>
 </blockquote>
 
 </div>
 </div>
 </div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="get_nsrdb_download_links" class="doc_header"><code>get_nsrdb_download_links</code><a href="https://github.com/sarthakjariwala/nrel_dev_api/tree/master/nrel_dev_api/solar/nsrdb.py#L59" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_nsrdb_download_links</code>(<strong><code>year</code></strong>, <strong><code>interval</code></strong>=<em><code>None</code></em>, <strong><code>api_key</code></strong>=<em><code>None</code></em>, <strong><code>wkt</code></strong>=<em><code>None</code></em>, <strong><code>address</code></strong>=<em><code>None</code></em>, <strong><code>lat</code></strong>=<em><code>None</code></em>, <strong><code>lon</code></strong>=<em><code>None</code></em>, <strong><code>dataset_type</code></strong>=<em><code>None</code></em>, <strong><code>show_empty</code></strong>=<em><code>False</code></em>)</p>
+</blockquote>
+<p>Get NSRDB dowload links from data query for the specified location</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">links</span> <span class="o">=</span> <span class="n">get_nsrdb_download_links</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">2017</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="mf">47.6</span><span class="p">,</span> <span class="n">lon</span><span class="o">=-</span><span class="mf">122.3</span><span class="p">)</span>
+<span class="n">links</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[&#39;https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?names=2017&amp;wkt=POINT%28-122.3+47.6%29&amp;interval=30&amp;api_key=yourapikey&amp;email=youremail&#39;,
+ &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?names=2017&amp;wkt=POINT%28-122.3+47.6%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;,
+ &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-tmy-download.csv?names=tmy-2017&amp;wkt=POINT%28-122.3+47.6%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;,
+ &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-tmy-download.csv?names=tdy-2017&amp;wkt=POINT%28-122.3+47.6%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;,
+ &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-tmy-download.csv?names=tgy-2017&amp;wkt=POINT%28-122.3+47.6%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="download_nsrdb_data" class="doc_header"><code>download_nsrdb_data</code><a href="https://github.com/sarthakjariwala/nrel_dev_api/tree/master/nrel_dev_api/solar/nsrdb.py#L132" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>download_nsrdb_data</code>(<strong><code>link</code></strong>, <strong><code>email</code></strong>, <strong><code>api_key</code></strong>=<em><code>None</code></em>)</p>
+</blockquote>
+<p>Download NSRDB data from the provided link and returns a pandas DataFrame.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">download_nsrdb_data</span><span class="p">(</span><span class="n">links</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">email</span><span class="o">=</span><span class="s2">&quot;sarthakjariwala1@gmail.com&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>&lt;ipython-input-46-68770a389994&gt;:39: UserWarning: Could not set the index to datetime; please do it manually
+  warnings.warn(&#34;Could not set the index to datetime; please do it manually&#34;, UserWarning)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Day</th>
+      <th>Hour</th>
+      <th>Minute</th>
+      <th>Dew Point</th>
+      <th>DHI</th>
+      <th>DNI</th>
+      <th>GHI</th>
+      <th>Surface Albedo</th>
+      <th>Pressure</th>
+      <th>Temperature</th>
+      <th>Wind Direction</th>
+      <th>Wind Speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2014</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>30</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.072</td>
+      <td>1010</td>
+      <td>5</td>
+      <td>170.0</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2014</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>30</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.072</td>
+      <td>1010</td>
+      <td>5</td>
+      <td>170.8</td>
+      <td>0.5</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2014</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>30</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.072</td>
+      <td>1010</td>
+      <td>4</td>
+      <td>146.8</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2014</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>30</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.072</td>
+      <td>1010</td>
+      <td>4</td>
+      <td>154.9</td>
+      <td>0.6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2014</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>30</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.072</td>
+      <td>1010</td>
+      <td>4</td>
+      <td>141.2</td>
+      <td>0.5</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
 </div>
  
 

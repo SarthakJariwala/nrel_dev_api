@@ -9,7 +9,9 @@ index = {"get_request": "00_core.ipynb",
          "SolarResourceData": "01_solar.resource_data.ipynb",
          "SolarDatasetQuery": "02_solar.dataset_query.ipynb",
          "PVWattsV6": "03_solar.pvwatts_v6.ipynb",
-         "NSRDB_DataQuery": "04_solar.nsrdb.ipynb"}
+         "NSRDB_DataQuery": "04_solar.nsrdb.ipynb",
+         "get_nsrdb_download_links": "04_solar.nsrdb.ipynb",
+         "download_nsrdb_data": "04_solar.nsrdb.ipynb"}
 
 modules = ["_core.py",
            "solar/resource_data.py",
