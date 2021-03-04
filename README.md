@@ -10,16 +10,25 @@
 
 ## How to use
 
+Globally set your NREL developer API key.
+
+```python
+from nrel_dev_api import set_nrel_api_key
+
+set_nrel_api_key(NREL_API_KEY)
+```
+
+Alternatively, you can pass the `api_key` parameter as shown [here](#query-national-solar-radiation-database-(nsrdb)).
+
 ### PVWatts V6
 
 Estimate the energy production of grid-connected photovoltaic (PV) energy systems using NREL's PVWatts V6 API based on a few simple location and system inputs.
 
-```
+```python
 from nrel_dev_api.solar import PVWattsV6
 
 # create PVWattsV6 class and pass the necessary location and system inputs
-pvwatts_v6 = PVWattsV6(api_key=NREL_API_KEY,
-                       system_capacity=4,
+pvwatts_v6 = PVWattsV6(system_capacity=4,
                        address="Seattle, WA",
                        azimuth=180,
                        tilt=40,
@@ -91,7 +100,7 @@ pvwatts_v6.outputs
 
 You can also view the details about the station.
 
-```
+```python
 pvwatts_v6.station_info
 ```
 
@@ -112,7 +121,7 @@ pvwatts_v6.station_info
 
 ### Query National Solar Radiation Database (NSRDB)
 
-```
+```python
 from nrel_dev_api.solar import NSRDB_DataQuery
 
 nsrdb_data_query = NSRDB_DataQuery(api_key=NREL_API_KEY, wkt="POINT(91.287 23.832)")
@@ -257,7 +266,7 @@ nsrdb_data_query.outputs
 
 ### Get solar resource data for a specific location
 
-```
+```python
 from nrel_dev_api.solar import SolarResourceData
 
 # get solar resource data for a specific latitude and longitude
@@ -314,7 +323,7 @@ solar_resource_data.outputs
 
 ### Get information on the closest climate data for a location.
 
-```
+```python
 from nrel_dev_api.solar import SolarDatasetQuery
 
 # create a dataset query class

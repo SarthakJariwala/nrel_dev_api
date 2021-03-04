@@ -3,6 +3,7 @@
 __all__ = ['get_request', 'BASE_URL', 'set_nrel_api_key', 'check_api_key']
 
 # Cell
+#hide
 import requests
 import warnings
 
