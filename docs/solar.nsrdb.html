@@ -335,7 +335,7 @@ including a set of links that can be used to download the data.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">links</span> <span class="o">=</span> <span class="n">get_nsrdb_download_links</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">2017</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="mf">47.6</span><span class="p">,</span> <span class="n">lon</span><span class="o">=-</span><span class="mf">122.3</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">links</span> <span class="o">=</span> <span class="n">get_nsrdb_download_links</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">2016</span><span class="p">,</span> <span class="n">lat</span><span class="o">=</span><span class="mf">47.6</span><span class="p">,</span> <span class="n">lon</span><span class="o">=-</span><span class="mf">122.3</span><span class="p">)</span>
 <span class="n">links</span>
 </pre></div>
 
@@ -351,11 +351,8 @@ including a set of links that can be used to download the data.</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>[&#39;https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?names=2017&amp;wkt=POINT%28-122.3+47.6%29&amp;interval=30&amp;api_key=yourapikey&amp;email=youremail&#39;,
- &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?names=2017&amp;wkt=POINT%28-122.3+47.6%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;,
- &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-tmy-download.csv?names=tmy-2017&amp;wkt=POINT%28-122.3+47.6%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;,
- &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-tmy-download.csv?names=tdy-2017&amp;wkt=POINT%28-122.3+47.6%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;,
- &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-tmy-download.csv?names=tgy-2017&amp;wkt=POINT%28-122.3+47.6%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;]</pre>
+<pre>[&#39;https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?names=2016&amp;wkt=POINT%28-122.3+47.6%29&amp;interval=30&amp;api_key=yourapikey&amp;email=youremail&#39;,
+ &#39;https://developer.nrel.gov/api/nsrdb/v2/solar/psm3-download.csv?names=2016&amp;wkt=POINT%28-122.3+47.6%29&amp;interval=60&amp;api_key=yourapikey&amp;email=youremail&#39;]</pre>
 </div>
 
 </div>
@@ -377,7 +374,7 @@ including a set of links that can be used to download the data.</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="download_nsrdb_data" class="doc_header"><code>download_nsrdb_data</code><a href="https://github.com/sarthakjariwala/nrel_dev_api/tree/master/nrel_dev_api/solar/nsrdb.py#L132" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>download_nsrdb_data</code>(<strong><code>link</code></strong>, <strong><code>email</code></strong>, <strong><code>api_key</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="download_nsrdb_data" class="doc_header"><code>download_nsrdb_data</code><a href="https://github.com/sarthakjariwala/nrel_dev_api/tree/master/nrel_dev_api/solar/nsrdb.py#L135" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>download_nsrdb_data</code>(<strong><code>link</code></strong>, <strong><code>email</code></strong>, <strong><code>api_key</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Download NSRDB data from the provided link and returns a pandas DataFrame.</p>
 
@@ -430,7 +427,203 @@ including a set of links that can be used to download the data.</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>Index([&#39;Year&#39;, &#39;Month&#39;, &#39;Day&#39;, &#39;Hour&#39;, &#39;Minute&#39;, &#39;Temperature&#39;, &#39;Clearsky DHI&#39;,
+       &#39;Clearsky DNI&#39;, &#39;Clearsky GHI&#39;, &#39;Cloud Type&#39;, &#39;Dew Point&#39;, &#39;DHI&#39;, &#39;DNI&#39;,
+       &#39;Fill Flag&#39;, &#39;GHI&#39;, &#39;Relative Humidity&#39;, &#39;Solar Zenith Angle&#39;,
+       &#39;Surface Albedo&#39;, &#39;Pressure&#39;, &#39;Precipitable Water&#39;, &#39;Wind Direction&#39;,
+       &#39;Wind Speed&#39;, &#39;Global Horizontal UV Irradiance (280-400nm)&#39;,
+       &#39;Global Horizontal UV Irradiance (295-385nm)&#39;],
+      dtype=&#39;object&#39;)</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="s2">&quot;GHI&quot;</span><span class="p">,</span> <span class="s2">&quot;Pressure&quot;</span><span class="p">,</span> <span class="s2">&quot;Wind Speed&quot;</span><span class="p">,</span> <span class="s2">&quot;Precipitable Water&quot;</span><span class="p">]]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Temperature</th>
+      <th>GHI</th>
+      <th>Pressure</th>
+      <th>Wind Speed</th>
+      <th>Precipitable Water</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2016-01-01 00:00:00</th>
+      <td>-1</td>
+      <td>36</td>
+      <td>1010</td>
+      <td>0.9</td>
+      <td>0.430</td>
+    </tr>
+    <tr>
+      <th>2016-01-01 00:30:00</th>
+      <td>-1</td>
+      <td>0</td>
+      <td>1010</td>
+      <td>0.8</td>
+      <td>0.423</td>
+    </tr>
+    <tr>
+      <th>2016-01-01 01:00:00</th>
+      <td>-1</td>
+      <td>0</td>
+      <td>1010</td>
+      <td>0.8</td>
+      <td>0.416</td>
+    </tr>
+    <tr>
+      <th>2016-01-01 01:30:00</th>
+      <td>-1</td>
+      <td>0</td>
+      <td>1010</td>
+      <td>0.7</td>
+      <td>0.411</td>
+    </tr>
+    <tr>
+      <th>2016-01-01 02:00:00</th>
+      <td>-2</td>
+      <td>0</td>
+      <td>1010</td>
+      <td>0.7</td>
+      <td>0.406</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2016-12-31 21:30:00</th>
+      <td>1</td>
+      <td>272</td>
+      <td>990</td>
+      <td>1.2</td>
+      <td>1.062</td>
+    </tr>
+    <tr>
+      <th>2016-12-31 22:00:00</th>
+      <td>1</td>
+      <td>237</td>
+      <td>990</td>
+      <td>1.3</td>
+      <td>1.090</td>
+    </tr>
+    <tr>
+      <th>2016-12-31 22:30:00</th>
+      <td>1</td>
+      <td>192</td>
+      <td>990</td>
+      <td>1.3</td>
+      <td>1.082</td>
+    </tr>
+    <tr>
+      <th>2016-12-31 23:00:00</th>
+      <td>1</td>
+      <td>140</td>
+      <td>990</td>
+      <td>1.3</td>
+      <td>1.075</td>
+    </tr>
+    <tr>
+      <th>2016-12-31 23:30:00</th>
+      <td>1</td>
+      <td>84</td>
+      <td>990</td>
+      <td>1.3</td>
+      <td>1.075</td>
+    </tr>
+  </tbody>
+</table>
+<p>17568 rows × 5 columns</p>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The index in the <code>DataFrame</code> returned automatically accounts for the leap years.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">feb</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;2016-02&quot;</span><span class="p">][[</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="s2">&quot;Month&quot;</span><span class="p">,</span> <span class="s2">&quot;Day&quot;</span><span class="p">,</span> <span class="s2">&quot;Minute&quot;</span><span class="p">]]</span>
+<span class="n">feb</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -465,150 +658,47 @@ including a set of links that can be used to download the data.</p>
       <th>Year</th>
       <th>Month</th>
       <th>Day</th>
-      <th>Hour</th>
       <th>Minute</th>
-      <th>Temperature</th>
-      <th>Clearsky DHI</th>
-      <th>Clearsky DNI</th>
-      <th>Clearsky GHI</th>
-      <th>Cloud Type</th>
-      <th>...</th>
-      <th>GHI</th>
-      <th>Relative Humidity</th>
-      <th>Solar Zenith Angle</th>
-      <th>Surface Albedo</th>
-      <th>Pressure</th>
-      <th>Precipitable Water</th>
-      <th>Wind Direction</th>
-      <th>Wind Speed</th>
-      <th>Global Horizontal UV Irradiance (280-400nm)</th>
-      <th>Global Horizontal UV Irradiance (295-385nm)</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>2017-01-01 00:00:00</th>
-      <td>2017</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>20</td>
-      <td>233</td>
-      <td>32</td>
-      <td>4</td>
-      <td>...</td>
-      <td>32</td>
-      <td>100.0</td>
-      <td>87.08</td>
-      <td>0.866</td>
-      <td>990</td>
-      <td>1.020</td>
-      <td>188.2</td>
-      <td>1.2</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2017-01-01 00:30:00</th>
-      <td>2017</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>30</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>8</td>
-      <td>...</td>
-      <td>0</td>
-      <td>100.0</td>
-      <td>91.13</td>
-      <td>0.866</td>
-      <td>990</td>
-      <td>0.984</td>
-      <td>188.2</td>
-      <td>1.1</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2017-01-01 01:00:00</th>
-      <td>2017</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>8</td>
-      <td>...</td>
-      <td>0</td>
-      <td>100.0</td>
-      <td>95.45</td>
-      <td>0.866</td>
-      <td>990</td>
-      <td>0.949</td>
-      <td>208.3</td>
-      <td>1.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2017-01-01 01:30:00</th>
-      <td>2017</td>
-      <td>1</td>
-      <td>1</td>
-      <td>1</td>
-      <td>30</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4</td>
-      <td>...</td>
-      <td>0</td>
-      <td>100.0</td>
-      <td>100.00</td>
-      <td>0.866</td>
-      <td>990</td>
-      <td>0.911</td>
-      <td>208.3</td>
-      <td>0.9</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>2017-01-01 02:00:00</th>
-      <td>2017</td>
-      <td>1</td>
-      <td>1</td>
+      <th>2016-02-29 21:30:00</th>
+      <td>2016</td>
       <td>2</td>
+      <td>29</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>2016-02-29 22:00:00</th>
+      <td>2016</td>
+      <td>2</td>
+      <td>29</td>
       <td>0</td>
+    </tr>
+    <tr>
+      <th>2016-02-29 22:30:00</th>
+      <td>2016</td>
+      <td>2</td>
+      <td>29</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>2016-02-29 23:00:00</th>
+      <td>2016</td>
+      <td>2</td>
+      <td>29</td>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4</td>
-      <td>...</td>
-      <td>0</td>
-      <td>99.9</td>
-      <td>104.72</td>
-      <td>0.866</td>
-      <td>990</td>
-      <td>0.874</td>
-      <td>228.4</td>
-      <td>0.9</td>
-      <td>0.0</td>
-      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2016-02-29 23:30:00</th>
+      <td>2016</td>
+      <td>2</td>
+      <td>29</td>
+      <td>30</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 24 columns</p>
 </div>
 </div>
 
