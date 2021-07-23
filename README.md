@@ -1,8 +1,8 @@
 # nrel-dev-api
+
 > Access data and analysis services that NREL (National Renewable Energy Lab) provides using a python API.
 
-
-*NOTE: In order to use the NREL developer API, you will need an API key from NREL. You can get one [here](https://developer.nrel.gov/signup/). The process is simple and only requires your name and email (where you will receive the API key).*
+_NOTE: In order to use the NREL developer API, you will need an API key from NREL. You can get one [here](https://developer.nrel.gov/signup/). The process is simple and only requires your name and email (where you will receive the API key)._
 
 ## Install
 
@@ -18,7 +18,7 @@ from nrel_dev_api import set_nrel_api_key
 set_nrel_api_key(NREL_API_KEY)
 ```
 
-Alternatively, you can pass the `api_key` parameter as shown [here](#query-national-solar-radiation-database-(nsrdb)).
+Alternatively, you can pass the `api_key` parameter as shown [here](<#query-national-solar-radiation-database-(nsrdb)>).
 
 ### PVWatts V6
 
@@ -40,9 +40,6 @@ pvwatts_v6 = PVWattsV6(system_capacity=4,
 # the output data is stored in the outputs attribute
 pvwatts_v6.outputs
 ```
-
-
-
 
     {'ac_monthly': [197.7586059570312,
       281.6268005371094,
@@ -96,16 +93,11 @@ pvwatts_v6.outputs
      'solrad_annual': 4.120377063751221,
      'capacity_factor': 13.7155122756958}
 
-
-
 You can also view the details about the station.
 
 ```python
 pvwatts_v6.station_info
 ```
-
-
-
 
     {'lat': 47.61000061035156,
      'lon': -122.3399963378906,
@@ -117,8 +109,6 @@ pvwatts_v6.station_info
      'solar_resource_file': 'W12234N4761.csv',
      'distance': 1048}
 
-
-
 ### Query National Solar Radiation Database (NSRDB)
 
 ```python
@@ -129,9 +119,6 @@ nsrdb_data_query = NSRDB_DataQuery(api_key=NREL_API_KEY, wkt="POINT(91.287 23.83
 # check the outputs
 nsrdb_data_query.outputs
 ```
-
-
-
 
     [{'apiDocs': 'https://developer.nrel.gov/docs/solar/nsrdb/msg-iodc/',
       'availableIntervals': [15, 30, 60],
@@ -262,8 +249,6 @@ nsrdb_data_query.outputs
         'interval': 60,
         'link': 'https://developer.nrel.gov/api/nsrdb/v2/solar/suny-india-tmy-download.csv?names=tmy&wkt=POINT%2891.287+23.832%29&interval=60&api_key=yourapikey&email=youremail'}]}]
 
-
-
 ### Get solar resource data for a specific location
 
 ```python
@@ -275,9 +260,6 @@ solar_resource_data = SolarResourceData(api_key=NREL_API_KEY, lat=40, lon=-105)
 # the output data is stored in the outputs attribute
 solar_resource_data.outputs
 ```
-
-
-
 
     {'avg_dni': {'annual': 6.06,
       'monthly': {'jan': 5.0,
@@ -319,8 +301,6 @@ solar_resource_data.outputs
        'nov': 4.99,
        'dec': 4.47}}}
 
-
-
 ### Get information on the closest climate data for a location.
 
 ```python
@@ -332,9 +312,6 @@ solar_dataset_query = SolarDatasetQuery(api_key=NREL_API_KEY, address="San Franc
 # get the output
 solar_dataset_query.outputs
 ```
-
-
-
 
     {'tmy2': {'id': '0-23234',
       'city': 'SAN FRANCISCO',
@@ -363,5 +340,3 @@ solar_dataset_query.outputs
       'timezone': -8,
       'elevation': 55,
       'resolution': 4}}
-
-

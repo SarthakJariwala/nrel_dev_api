@@ -1,0 +1,12 @@
+{
+  "_template": "gh:cjolowicz/cookiecutter-hypermodern-python",
+  "author": "Sarthak Jariwala",
+  "development_status": "Development Status :: 4 - Beta",
+  "email": "jariwala@uw.edu",
+  "friendly_name": "NREL Dev API",
+  "github_user": "SarthakJariwala",
+  "license": "Apache-2.0",
+  "package_name": "nrel_dev_api",
+  "project_name": "nrel_dev_api",
+  "version": "0.1.1"
+}
