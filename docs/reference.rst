@@ -6,8 +6,8 @@ Reference
     :backlinks: none
 
 
-nrel_dev_api.__main__
+nrel_dev_api.solar
 ---------------------
 
-.. automodule:: nrel_dev_api.__main__
+.. automodule:: nrel_dev_api.solar
    :members:

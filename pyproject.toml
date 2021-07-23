@@ -31,7 +31,6 @@ safety = "^1.10.3"
 mypy = "^0.910"
 typeguard = "^2.12.1"
 xdoctest = {extras = ["colors"], version = "^0.15.5"}
-sphinx = "^4.1.1"
 sphinx-autobuild = "^2021.3.14"
 pre-commit = "^2.13.0"
 flake8 = "^3.9.2"
@@ -49,6 +48,8 @@ sphinx-click = "^3.0.1"
 Pygments = "^2.9.0"
 nox = "^2021.6.12"
 nox-poetry = "^0.8.6"
+Sphinx = "^3"
+sphinx-book-theme = "^0.1.1"
 
 [tool.poetry.scripts]
 nrel_dev_api = "nrel_dev_api.__main__:main"
