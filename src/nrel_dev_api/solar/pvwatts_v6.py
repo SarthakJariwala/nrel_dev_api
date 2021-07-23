@@ -1,5 +1,8 @@
-from typing import Union, Optional
-from .._core import get_request, check_api_key
+from typing import Optional
+from typing import Union
+
+from .._core import check_api_key
+from .._core import get_request
 
 
 __all__ = ["PVWattsV6"]
@@ -17,20 +20,20 @@ class PVWattsV6:
         system_capacity: Union[int, float],
         module_type: int,
         losses: Union[int, float],
-        array_type: int, # TODO - provide string options
+        array_type: int,  # TODO - provide string options
         tilt: Union[int, float],
         azimuth: Union[int, float],
         api_key: Optional[str] = None,
-        lat: Union[int, float, None]= None,
+        lat: Union[int, float, None] = None,
         lon: Union[int, float, None] = None,
         address: Optional[str] = None,
-        file_id: Optional[str]=None,
-        dataset: str="nsrdb",
-        radius: int =100,
-        timeframe: str="monthly",
-        dc_ac_ratio: float=1.2,
-        gcr : float =0.4,
-        inv_eff: Union[int, float]=96,
+        file_id: Optional[str] = None,
+        dataset: str = "nsrdb",
+        radius: int = 100,
+        timeframe: str = "monthly",
+        dc_ac_ratio: float = 1.2,
+        gcr: float = 0.4,
+        inv_eff: Union[int, float] = 96,
     ):
 
         if api_key is None:

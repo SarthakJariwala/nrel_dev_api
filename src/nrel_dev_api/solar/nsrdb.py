@@ -1,8 +1,16 @@
-import pandas as pd
 import warnings
-from typing import Union, List, Dict, Any, Optional
 from itertools import chain
-from .._core import get_request, check_api_key, _API_KEY
+from typing import Any
+from typing import Dict
+from typing import List
+from typing import Optional
+from typing import Union
+
+import pandas as pd
+
+from .._core import _API_KEY
+from .._core import check_api_key
+from .._core import get_request
 
 
 __all__ = [
@@ -150,7 +158,7 @@ LEAP_YEARS = [
 def download_nsrdb_data(
     link: str,
     email: str,
-    api_key: Optional[str]= None,
+    api_key: Optional[str] = None,
 ) -> pd.DataFrame:
     """Download NSRDB data from the provided link and returns a pandas DataFrame."""
 
@@ -166,7 +174,7 @@ def download_nsrdb_data(
     link = link.replace("youremail", email)
 
     # get and split the parameters
-    params : List[str] = link.split("?")[-1].split("&")
+    params: List[str] = link.split("?")[-1].split("&")
 
     for p in params:
         p_split = p.split("=")
@@ -181,7 +189,7 @@ def download_nsrdb_data(
                 link = link + "&leap_day=true"
                 total_mins_in_year += 24 * 60  # add extra mins for the leap year
 
-    df : pd.DataFrame = pd.read_csv(link, skiprows=2)
+    df: pd.DataFrame = pd.read_csv(link, skiprows=2)
 
     try:
         # if this doesn't raise valuerror, then we can go ahead and set the new index

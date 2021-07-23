@@ -1,5 +1,8 @@
-from typing import Union, Optional
-from .._core import get_request, check_api_key
+from typing import Optional
+from typing import Union
+
+from .._core import check_api_key
+from .._core import get_request
 
 
 # TODO - add attributes in docstring, add checks for data inputs

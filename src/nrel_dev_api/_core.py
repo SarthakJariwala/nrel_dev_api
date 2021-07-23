@@ -1,6 +1,8 @@
-import requests
 import warnings
-from typing import Dict, Any
+from typing import Any
+from typing import Dict
+
+import requests
 from requests import Response
 
 __all__ = ["get_request", "BASE_URL", "set_nrel_api_key", "check_api_key"]
@@ -13,7 +15,7 @@ def get_request(query_url: str, params: Dict[str, Any]) -> Response:
 
     resp = requests.get(BASE_URL + query_url, params=params)
 
-    content : Dict[str, Any] = resp.json()
+    content: Dict[str, Any] = resp.json()
 
     # if any warnings are encountered, bring them up to the user
     if content.get("warnings"):
