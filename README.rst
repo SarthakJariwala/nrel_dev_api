@@ -137,8 +137,6 @@ Get information on the closest climate data for a location.
    # get the output
    solar_dataset_query.outputs
 
-Please see the `Command-line Reference <Usage_>`_ for details.
-
 
 Contributing
 ------------
