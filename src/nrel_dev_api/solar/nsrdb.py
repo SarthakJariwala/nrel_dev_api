@@ -160,7 +160,19 @@ def download_nsrdb_data(
     email: str,
     api_key: Optional[str] = None,
 ) -> pd.DataFrame:
-    """Download NSRDB data from the provided link and returns a pandas DataFrame."""
+    """
+    Download NSRDB data from the provided link and returns a pandas DataFrame.
+
+    Parameters
+    ----------
+
+    link:
+        NSRDB download link.
+    email:
+        Email
+    api_key:
+        NREL developer API key.
+    """
 
     total_mins_in_year = 365 * 24 * 60
 

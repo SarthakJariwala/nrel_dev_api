@@ -28,7 +28,15 @@ _API_KEY = None
 
 
 def set_nrel_api_key(api_key: str) -> None:
-    """Globally set the API key"""
+    """
+    Globally set the API key.
+
+    Parameters
+    ----------
+
+    api_key:
+        NREL developer API key.
+    """
     global _API_KEY
 
     if api_key:

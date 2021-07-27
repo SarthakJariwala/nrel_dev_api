@@ -1,13 +1,12 @@
-Reference
-=========
+API Reference
+=============
 
-.. contents::
-    :local:
-    :backlinks: none
+:doc:`API Key <api/api_key>`
+----------------------------
 
+Set and verify API keys to access and use energy data from for the National Renewable Energy Laboratory.
 
-nrel_dev_api.solar
----------------------
+:doc:`Solar <api/solar>`
+------------------------
 
-.. automodule:: nrel_dev_api.solar
-   :members:
+Access data and analysis services that provide access to solar resource data and NREL models.
