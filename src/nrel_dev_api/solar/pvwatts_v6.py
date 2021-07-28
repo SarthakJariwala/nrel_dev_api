@@ -7,7 +7,7 @@ from .._core import get_request
 
 __all__ = ["PVWattsV6"]
 
-# TODO - add attributes in docstring, add checks for data inputs
+# TODO - add checks for data inputs
 class PVWattsV6:
     """Estimate the energy production of grid-connected photovoltaic (PV) energy systems
     using NREL's PVWatts API based on a few simple inputs.

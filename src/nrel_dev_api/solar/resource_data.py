@@ -26,6 +26,22 @@ class SolarResourceData:
         lon: Union[int, float, None] = None,
         address: Optional[str] = None,
     ):
+        """
+        Parameters
+        ----------
+
+        api_key:
+            NREL developer API key.
+        
+        lat:
+            Latitude of the location. Required if address is not specified.
+        
+        lon:
+            Longitude of the location. Required if address is not specified.
+        
+        address:
+            Address to use. Required if `lat` and `lon` are not specified.
+        """
 
         if api_key is None:
             # check if API key is already set
