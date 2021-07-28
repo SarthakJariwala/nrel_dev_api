@@ -3,6 +3,9 @@ Tutorial
 
 A list of detailed tutorials that demonstrate how to use `nrel_dev_api` to access and download resources from National Renewable Energy Laboratory (NREL).
 
+.. toctree::
+    :maxdepth: 1
+
 Basic
 -----
 
