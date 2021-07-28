@@ -22,6 +22,9 @@ How to report a bug
 
 Report bugs on the `Issue Tracker`_.
 
+Ensure the bug was not already reported by searching on GitHub under Issues.
+If you're unable to find an open issue addressing the problem, open a new one.
+
 When filing an issue, make sure to answer these questions:
 
 - Which operating system and Python version are you using?
@@ -43,11 +46,9 @@ Request features on the `Issue Tracker`_.
 How to set up your development environment
 ------------------------------------------
 
-You need Python 3.6+ and the following tools:
+You need Python 3.7+ and the following tools:
 
 - Poetry_
-- Nox_
-- nox-poetry_
 
 Install the package with development requirements:
 
@@ -61,7 +62,6 @@ or the command-line interface:
 .. code:: console
 
    $ poetry run python
-   $ poetry run nrel_dev_api
 
 .. _Poetry: https://python-poetry.org/
 .. _Nox: https://nox.thea.codes/
@@ -75,20 +75,20 @@ Run the full test suite:
 
 .. code:: console
 
-   $ nox
+   $ poetry run nox
 
 List the available Nox sessions:
 
 .. code:: console
 
-   $ nox --list-sessions
+   $ poetry run nox --list-sessions
 
 You can also run a specific Nox session.
 For example, invoke the unit test suite like this:
 
 .. code:: console
 
-   $ nox --session=tests
+   $ poetry run nox --session=tests
 
 Unit tests are located in the ``tests`` directory,
 and are written using the pytest_ testing framework.

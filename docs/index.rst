@@ -1,5 +1,4 @@
 .. include:: ../README.rst
-   :end-before: github-only
 
 .. _Contributor Guide: contributing.html
 .. _Usage: usage.html
@@ -9,7 +8,8 @@
    :maxdepth: 1
 
    usage
-   reference
+   Tutorial <tutorial>
+   API Reference <reference>
    contributing
    Code of Conduct <codeofconduct>
    License <license>

@@ -9,12 +9,32 @@ from .._core import get_request
 
 __all__ = ["SolarResourceData"]
 
-# TODO - add attributes in docstring, add checks for data inputs
+# TODO - add checks for data inputs
+
+
 class SolarResourceData:
-    """Returns various types of solar data for a location as a dictionary.
+    """
+    Returns various types of solar data for a location.
+
     The service from NREL currently returns data for
     average Direct Normal Irradiance, average Global Horizontal Irradiance,
     and average Tilt at Latitude.
+
+    Parameters
+    ----------
+    api_key:
+        NREL developer API key.
+
+    lat:
+        Latitude of the location.
+        Required if address is not specified.
+
+    lon:
+        Longitude of the location.
+        Required if address is not specified.
+
+    address:
+        Address to use. Required if `lat` and `lon` are not specified.
     """
 
     QUERY_URL = "/api/solar/solar_resource/v1.json"
