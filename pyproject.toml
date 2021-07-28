@@ -50,6 +50,7 @@ nox-poetry = "^0.8.6"
 Sphinx = "^3"
 sphinx-book-theme = "^0.1.1"
 nbsphinx = "^0.8.6"
+ipykernel = "^6.0.3"
 
 [tool.poetry.scripts]
 nrel_dev_api = "nrel_dev_api.__main__:main"
