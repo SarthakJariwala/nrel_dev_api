@@ -8,7 +8,6 @@ from typing import Union
 
 import pandas as pd
 
-from .._core import _API_KEY
 from .._core import check_api_key
 from .._core import get_request
 
@@ -22,10 +21,7 @@ __all__ = [
 
 
 class NSRDB_DataQuery:
-    """
-    Returns information on the closest NSRDB datasets for a location
-    including a set of links that can be used to download the data.
-    """
+    """Query National Solar Radiation Database (NSRDB)."""
 
     QUERY_URL = "/api/solar/nsrdb_data_query.json"
 
@@ -39,33 +35,40 @@ class NSRDB_DataQuery:
         dataset_type: Optional[str] = None,
         show_empty: bool = False,
     ):
-        """
+        """Returns information on the closest NSRDB datasets for a location.
+
+        Including a set of links that can be used to download the data.
+
         Parameters
         ----------
-
         api_key:
             NREL developer API key.
 
         wkt:
-            well-known text (WKT) representation of the geometry for which to extract data. May be a point, multipoint, or polygon geometry.
+            well-known text (WKT) representation of the geometry
+            for which to extract data.
+            May be a point, multipoint, or polygon geometry.
             Required if neither `lat`/`lon` not address are specified.
 
         address:
             Address to use. Required if neither `lat`/`lon` nor `wkt` are specified.
 
         lat:
-            Latitude of the location. Required if neither `address` nor `wkt` are specified.
+            Latitude of the location.
+            Required if neither `address` nor `wkt` are specified.
 
         lon:
-            Longitude of the location. Required if neither `address` not `wkt` are specified.
+            Longitude of the location.
+            Required if neither `address` not `wkt` are specified.
 
         dataset_type:
-            Type of the dataset to include in the response. Options are 'satellite' or 'station'.
+            Type of the dataset to include in the response.
+            Options are 'satellite' or 'station'.
 
         show_empty:
-            Return metadata for all datasets including those with no data at the given location.
+            Return metadata for all datasets
+            including those with no data at the given location.
         """
-
         if api_key is None:
             api_key = check_api_key()
 
@@ -114,7 +117,6 @@ def get_nsrdb_download_links(
 
     Parameters
     ----------
-
     year:
         The year to use for searching through NSRDB.
 
@@ -125,25 +127,30 @@ def get_nsrdb_download_links(
         NREL developer API key.
 
     wkt:
-        well-known text (WKT) representation of the geometry for which to extract data. May be a point, multipoint, or polygon geometry.
+        well-known text (WKT) representation of the geometry
+        for which to extract data.
+        May be a point, multipoint, or polygon geometry.
         Required if neither `lat`/`lon` not address are specified.
 
     address:
         Address to use. Required if neither `lat`/`lon` nor `wkt` are specified.
 
     lat:
-        Latitude of the location. Required if neither `address` nor `wkt` are specified.
+        Latitude of the location.
+        Required if neither `address` nor `wkt` are specified.
 
     lon:
-        Longitude of the location. Required if neither `address` not `wkt` are specified.
+        Longitude of the location.
+        Required if neither `address` not `wkt` are specified.
 
     dataset_type:
-        Type of the dataset to include in the response. Options are 'satellite' or 'station'.
+        Type of the dataset to include in the response.
+        Options are 'satellite' or 'station'.
 
     show_empty:
-        Return metadata for all datasets including those with no data at the given location.
+        Return metadata for all datasets
+        including those with no data at the given location.
     """
-
     if api_key is None:
         api_key = check_api_key()
 
@@ -220,14 +227,13 @@ def download_nsrdb_data(
     email: str,
     api_key: Optional[str] = None,
 ) -> pd.DataFrame:
-    """
-    Download NSRDB data from the provided link and returns a pandas DataFrame.
+    """Download NSRDB data from the provided link and returns a pandas DataFrame.
 
     Parameters
     ----------
-
     link:
-        NSRDB download link. If not known, it can be acquired using `get_nsrdb_download_links()`.
+        NSRDB download link.
+        If not known, it can be acquired using `get_nsrdb_download_links()`.
 
     email:
         Valid email.
@@ -235,7 +241,6 @@ def download_nsrdb_data(
     api_key:
         NREL developer API key.
     """
-
     total_mins_in_year = 365 * 24 * 60
 
     if not isinstance(link, str):

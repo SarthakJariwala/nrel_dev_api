@@ -2,7 +2,8 @@
 from datetime import datetime
 
 
-project = "nrel-dev-api : Python API to access data and analysis services from NREL (National Renewable Energy Lab)"
+project = """nrel-dev-api : Python API to access data and analysis services
+from NREL (National Renewable Energy Lab)."""
 author = "Sarthak Jariwala"
 copyright = f"2020 - {datetime.now().year}, {author}"
 
@@ -11,7 +12,7 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.napoleon",
     "sphinx.ext.intersphinx",
-    "nbsphinx"
+    "nbsphinx",
 ]
 
 autodoc_typehints = "description"

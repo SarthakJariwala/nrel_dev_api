@@ -11,8 +11,7 @@ BASE_URL = "https://developer.nrel.gov"
 
 
 def get_request(query_url: str, params: Dict[str, Any]) -> Response:
-    """Process the get request and returns the complete response"""
-
+    """Process the get request and returns the complete response."""
     resp = requests.get(BASE_URL + query_url, params=params)
 
     content: Dict[str, Any] = resp.json()
@@ -33,7 +32,6 @@ def set_nrel_api_key(api_key: str) -> None:
 
     Parameters
     ----------
-
     api_key:
         NREL developer API key.
     """
@@ -44,7 +42,9 @@ def set_nrel_api_key(api_key: str) -> None:
 
 
 def check_api_key() -> str:
-    """Check if API Key has been set.
+    """
+    Check if API Key has been set.
+
     If not set, a ValueError will be raised.
     If set, returns the API KEY.
     """
@@ -53,7 +53,8 @@ def check_api_key() -> str:
     if _API_KEY is None:
         raise ValueError(
             """Please provide your NREL Developer API Key.
-            You can set it using `set_nrel_api_key` function or pass it as `api_key` parameter."""
+            You can set it using `set_nrel_api_key` function
+            or pass it as `api_key` parameter."""
         )
     else:
         return _API_KEY

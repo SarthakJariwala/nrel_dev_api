@@ -5,10 +5,38 @@ from .._core import check_api_key
 from .._core import get_request
 
 
-# TODO - add attributes in docstring, add checks for data inputs
-class SolarDatasetQuery:
+# TODO - add checks for data inputs
 
-    """Returns information on the closest climate data for a location."""
+
+class SolarDatasetQuery:
+    """
+    Returns information on the closest climate data for a location.
+
+    Parameters
+    ----------
+    api_key:
+        NREL developer API key.
+
+    lat:
+        Latitude of the location.
+        Required if address is not specified.
+
+    lon:
+        Longitude of the location.
+        Required if address is not specified.
+
+    address:
+        Address to use.
+        Required if `lat` and `lon` are not specified.
+
+    radius:
+        The search radius (in miles) to use
+        when searching for climate data stations.
+        Use `radius=0` for closest station regardless of the distance.
+
+    return_all_stations:
+        Return all stations within the radius.
+    """
 
     QUERY_URL = "/api/solar/data_query/v1.json"
 
@@ -21,28 +49,6 @@ class SolarDatasetQuery:
         radius: int = 100,
         return_all_stations: bool = False,
     ):
-        """
-        Parameters
-        ----------
-
-        api_key:
-            NREL developer API key.
-
-        lat:
-            Latitude of the location. Required if address is not specified.
-
-        lon:
-            Longitude of the location. Required if address is not specified.
-
-        address:
-            Address to use. Required if `lat` and `lon` are not specified.
-
-        radius:
-            The search radius (in miles) to use when searching for climate data stations. Use `radius=0` for closest station regardless of the distance.
-
-        return_all_stations:
-            Return all stations within the radius.
-        """
 
         if api_key is None:
             # check if API key is already set

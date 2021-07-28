@@ -8,9 +8,80 @@ from .._core import get_request
 __all__ = ["PVWattsV6"]
 
 # TODO - add checks for data inputs
+
+
 class PVWattsV6:
-    """Estimate the energy production of grid-connected photovoltaic (PV) energy systems
+    """
+    Use PVWatts API from NREL to estimate energy production.
+
+    Estimate the energy production of grid-connected photovoltaic (PV) energy systems
     using NREL's PVWatts API based on a few simple inputs.
+
+    Parameters
+    ----------
+    system_capacity:
+        Nameplate capacity (kW).
+
+    module_type:
+        Module type.
+        0 - Standard
+        1 - Premium
+        2 - Thin Film
+
+    losses:
+        System losses (percent).
+
+    array_type:
+        Array type.
+        0 - Fixed Open Rack
+        1 - Fixed Roof Mounted
+        2 - 1 Axis
+        3 - 1 Axis Backtracking
+        4 - 2 Axis
+
+    tilt:
+        Tilt angle (degrees).
+
+    azimuth:
+        Azimuth angle (degrees).
+
+    address:
+        The address to use. Required if lat/lon or file_id not specified.
+
+    lat:
+        The latitude for the location to use.
+        Required if address or file_id not specified.
+
+    lon:
+        The longitude for the location to use.
+        Required if adress or file_id not specified.
+
+    file_id:
+        Reference to a specific climate data file to use.
+        Must be a valid id returned by the `SolarDatasetQuery` API.
+        Required if lat/lon or address not specified.
+
+    dataset:
+        The climate dataset to use.
+        Should not be passed if using file_id to specify the climate data file.
+        Options - nsrdb, tmy2, tmy3, intl.
+
+    radius:
+        The search radius to use when searching
+        for the closest climate data station (miles).
+        Use radius=0 to use the closest station regardless of the distance.
+
+    timeframe:
+        Granularity of the output response. Options - monthly, hourly.
+
+    dc_ac_ratio:
+        DC to AC ratio. Must be positive.
+
+    gcr:
+        Ground coverage ratio.
+
+    inv_eff:
+        Inverter efficiency at rated power.
     """
 
     QUERY_URL = "/api/pvwatts/v6.json"
@@ -35,68 +106,6 @@ class PVWattsV6:
         gcr: float = 0.4,
         inv_eff: Union[int, float] = 96,
     ):
-
-        """
-        Parameters
-        ----------
-
-        system_capacity:
-            Nameplate capacity (kW).
-
-        module_type:
-            Module type.
-            0 - Standard
-            1 - Premium
-            2 - Thin Film
-
-        losses:
-            System losses (percent).
-
-        array_type:
-            Array type.
-            0 - Fixed Open Rack
-            1 - Fixed Roof Mounted
-            2 - 1 Axis
-            3 - 1 Axis Backtracking
-            4 - 2 Axis
-
-        tilt:
-            Tilt angle (degrees).
-
-        azimuth:
-            Azimuth angle (degrees).
-
-        address:
-            The address to use. Required if lat/lon or file_id not specified.
-
-        lat:
-            The latitude for the location to use. Required if address or file_id not specified.
-
-        lon:
-            The longitude for the location to use. Required if adress or file_id not specified.
-
-        file_id:
-            Reference to a specific climate data file to use. Must be a valid id returned by the `SolarDatasetQuery` API. Required if lat/lon or address not specified.
-
-        dataset:
-            The climate dataset to use. Should not be passed if using file_id to specify the climate data file.
-            Options - nsrdb, tmy2, tmy3, intl.
-
-        radius:
-            The search radius to use when searching for the closest climate data station (miles). Use radius=0 to use the closest station regardless of the distance.
-
-        timeframe:
-            Granularity of the output response. Options - monthly, hourly.
-
-        dc_ac_ratio:
-            DC to AC ratio. Must be positive.
-
-        gcr:
-            Ground coverage ratio.
-
-        inv_eff:
-            Inverter efficiency at rated power.
-        """
 
         if api_key is None:
             api_key = check_api_key()
