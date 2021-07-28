@@ -27,19 +27,19 @@ class SolarDatasetQuery:
 
         api_key:
             NREL developer API key.
-        
+
         lat:
             Latitude of the location. Required if address is not specified.
-        
+
         lon:
             Longitude of the location. Required if address is not specified.
-        
+
         address:
             Address to use. Required if `lat` and `lon` are not specified.
-        
+
         radius:
             The search radius (in miles) to use when searching for climate data stations. Use `radius=0` for closest station regardless of the distance.
-        
+
         return_all_stations:
             Return all stations within the radius.
         """

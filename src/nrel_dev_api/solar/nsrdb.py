@@ -49,19 +49,19 @@ class NSRDB_DataQuery:
         wkt:
             well-known text (WKT) representation of the geometry for which to extract data. May be a point, multipoint, or polygon geometry.
             Required if neither `lat`/`lon` not address are specified.
-        
+
         address:
             Address to use. Required if neither `lat`/`lon` nor `wkt` are specified.
-        
+
         lat:
             Latitude of the location. Required if neither `address` nor `wkt` are specified.
-        
+
         lon:
             Longitude of the location. Required if neither `address` not `wkt` are specified.
-        
+
         dataset_type:
             Type of the dataset to include in the response. Options are 'satellite' or 'station'.
-        
+
         show_empty:
             Return metadata for all datasets including those with no data at the given location.
         """
@@ -111,35 +111,35 @@ def get_nsrdb_download_links(
 ) -> List[str]:
     """
     Get NSRDB dowload links from data query for the specified location.
-    
+
     Parameters
     ----------
 
     year:
         The year to use for searching through NSRDB.
-    
+
     interval:
         Time interval of interest in minutes. Options are 15, 30, 60 (minutes).
-    
+
     api_key:
         NREL developer API key.
 
     wkt:
         well-known text (WKT) representation of the geometry for which to extract data. May be a point, multipoint, or polygon geometry.
         Required if neither `lat`/`lon` not address are specified.
-    
+
     address:
         Address to use. Required if neither `lat`/`lon` nor `wkt` are specified.
-    
+
     lat:
         Latitude of the location. Required if neither `address` nor `wkt` are specified.
-    
+
     lon:
         Longitude of the location. Required if neither `address` not `wkt` are specified.
-    
+
     dataset_type:
         Type of the dataset to include in the response. Options are 'satellite' or 'station'.
-    
+
     show_empty:
         Return metadata for all datasets including those with no data at the given location.
     """
@@ -228,10 +228,10 @@ def download_nsrdb_data(
 
     link:
         NSRDB download link. If not known, it can be acquired using `get_nsrdb_download_links()`.
-    
+
     email:
         Valid email.
-    
+
     api_key:
         NREL developer API key.
     """

@@ -36,4 +36,3 @@ Solar DatasetQuery
 Get information on the closest climate data for a location.
 
 .. autoclass:: nrel_dev_api.solar.SolarDatasetQuery
-

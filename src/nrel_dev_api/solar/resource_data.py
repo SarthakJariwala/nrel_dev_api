@@ -32,13 +32,13 @@ class SolarResourceData:
 
         api_key:
             NREL developer API key.
-        
+
         lat:
             Latitude of the location. Required if address is not specified.
-        
+
         lon:
             Longitude of the location. Required if address is not specified.
-        
+
         address:
             Address to use. Required if `lat` and `lon` are not specified.
         """
