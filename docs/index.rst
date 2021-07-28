@@ -8,6 +8,7 @@
    :maxdepth: 1
 
    usage
+   Tutorial <tutorial>
    API Reference <reference>
    contributing
    Code of Conduct <codeofconduct>

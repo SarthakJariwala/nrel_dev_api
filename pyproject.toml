@@ -44,12 +44,12 @@ darglint = "^1.8.0"
 reorder-python-imports = "^2.5.0"
 pre-commit-hooks = "^4.0.1"
 sphinx-rtd-theme = "^0.5.2"
-sphinx-click = "^3.0.1"
 Pygments = "^2.9.0"
 nox = "^2021.6.12"
 nox-poetry = "^0.8.6"
 Sphinx = "^3"
 sphinx-book-theme = "^0.1.1"
+nbsphinx = "^0.8.6"
 
 [tool.poetry.scripts]
 nrel_dev_api = "nrel_dev_api.__main__:main"

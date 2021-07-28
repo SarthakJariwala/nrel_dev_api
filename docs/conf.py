@@ -11,10 +11,17 @@ extensions = [
     "sphinx.ext.autosummary",
     "sphinx.ext.napoleon",
     "sphinx.ext.intersphinx",
+    "nbsphinx"
 ]
 
 autodoc_typehints = "description"
 autoclass_content = "both"
+
+# nbsphinx settings
+nbsphinx_prompt_width = 0
+nbsphinx_allow_errors = True
+nbsphinx_execute = "always"
+nbsphinx_kernel_name = "python3"
 
 html_theme = "sphinx_book_theme"
 

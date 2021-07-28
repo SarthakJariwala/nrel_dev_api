@@ -3,9 +3,7 @@ NREL Dev API
 
 |PyPI| |Status| |Python Version| |License|
 
-|Read the Docs| |Tests| |Codecov|
-
-|pre-commit| |Black|
+|Read the Docs| |Tests| |Codecov| |pre-commit| |Black|
 
 .. |PyPI| image:: https://img.shields.io/pypi/v/nrel_dev_api.svg
    :target: https://pypi.org/project/nrel_dev_api/
@@ -48,7 +46,7 @@ You can install *nrel_dev_api* via pip_ from PyPI_:
 
 .. code:: console
 
-   $ pip install -U nrel_dev_api
+   pip install -U nrel_dev_api
 
 
 Usage
