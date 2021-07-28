@@ -36,7 +36,7 @@ NREL Dev API
 
 Access data and analysis services that NREL (National Renewable Energy Lab) provides using a python API.
 
-.. note:: In order to use the NREL developer API, you will need an API key from NREL. You can get one `here <https://developer.nrel.gov/signup/>`_. The process is simple and only requires your name and email (where you will receive the API key).
+.. note:: In order to use `nrel_dev_api`, you will need an API key from NREL. You can get one `here <https://developer.nrel.gov/signup/>`_.
 
 
 Installation
