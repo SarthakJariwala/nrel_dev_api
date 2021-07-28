@@ -173,6 +173,7 @@ def docs_build(session: Session) -> None:
     """Build the documentation."""
     args = session.posargs or ["docs", "docs/_build"]
     session.install(".")
+    session.install("ipykernel")  # needed for nbsphinx
     session.install("sphinx", "sphinx-book-theme", "nbsphinx")
 
     build_dir = Path("docs", "_build")
@@ -187,6 +188,7 @@ def docs(session: Session) -> None:
     """Build and serve the documentation with live reloading on file changes."""
     args = session.posargs or ["--open-browser", "docs", "docs/_build"]
     session.install(".")
+    session.install("ipykernel")  # needed for nbsphinx
     session.install("sphinx", "sphinx-autobuild", "sphinx-book-theme", "nbsphinx")
 
     build_dir = Path("docs", "_build")
