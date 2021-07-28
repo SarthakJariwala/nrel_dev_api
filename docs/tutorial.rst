@@ -20,7 +20,8 @@ Solar Resource Data
 .. toctree::
     :maxdepth: 2
  
-    Accessing solar resource data <Tutorial/01_solar.resource_data.ipynb> 
+    Accessing solar resource data <Tutorial/solar/solar_resource_data.ipynb> 
+
 
 Query Solar Datasets
 ++++++++++++++++++++
@@ -28,7 +29,8 @@ Query Solar Datasets
 .. toctree::
     :maxdepth: 2
     
-    Query available solar datasets <Tutorial/01_solar.dataset_query.ipynb> 
+    Query available solar datasets <Tutorial/solar/solar_dataset_query.ipynb> 
+
 
 PV Watts
 ++++++++
@@ -36,7 +38,8 @@ PV Watts
 .. toctree::
     :maxdepth: 2
     
-    PV Watts v6 <Tutorial/01_solar.pvwatts_v6.ipynb> 
+    PV Watts v6 <Tutorial/solar/pvwatts_v6.ipynb> 
+
 
 National Solar Radiation Database
 +++++++++++++++++++++++++++++++++
@@ -44,4 +47,4 @@ National Solar Radiation Database
 .. toctree::
     :maxdepth: 2
     
-    Accessing and downloading NSRDB data <Tutorial/01_solar.nsrdb.ipynb> 
+    Accessing and downloading NSRDB data <Tutorial/solar/nsrdb.ipynb> 
