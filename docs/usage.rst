@@ -52,6 +52,10 @@ Query National Solar Radiation Database (NSRDB)
    # check the outputs
    nsrdb_data_query.outputs
 
+++++++++++++++++++++++
+Data on Solar Resource
+++++++++++++++++++++++
+
 Get solar resource data for a specific location
 
 .. code:: python
@@ -63,6 +67,10 @@ Get solar resource data for a specific location
 
    # the output data is stored in the outputs attribute
    solar_resource_data.outputs
+
+++++++++++++++
+Solar Datasets
+++++++++++++++
 
 Get information on the closest climate data for a location.
 
