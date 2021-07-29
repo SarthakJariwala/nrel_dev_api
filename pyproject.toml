@@ -52,9 +52,6 @@ sphinx-book-theme = "^0.1.1"
 nbsphinx = "^0.8.6"
 ipykernel = "^6.0.3"
 
-[tool.poetry.scripts]
-nrel_dev_api = "nrel_dev_api.__main__:main"
-
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
 
@@ -64,7 +61,7 @@ source = ["nrel_dev_api"]
 
 [tool.coverage.report]
 show_missing = true
-fail_under = 100
+# fail_under = 100
 
 [tool.mypy]
 strict = true
