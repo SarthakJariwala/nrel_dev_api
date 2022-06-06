@@ -1,4 +1,4 @@
 sphinx==3.5.4
 sphinx_book_theme==0.1.1
-ipykernel==6.0.3
+ipykernel==6.13.1
 nbsphinx==0.8.6
